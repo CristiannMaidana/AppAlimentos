@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Index() {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text>Hello world!</Text>
@@ -11,7 +11,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#673d3d',
     alignItems: 'center',
     justifyContent: 'center',
   },
