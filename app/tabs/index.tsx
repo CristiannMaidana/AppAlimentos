@@ -7,6 +7,9 @@ export default function HomeScreen() {
       <Text style={{ fontSize: 30, marginTop: 16, fontWeight: 'bold' }}>
         The art of conscious discovery.
       </Text>
+      <Text style={{ fontSize: 20, marginTop: 32,}}>
+        Categories
+       </Text>
     </View>
   );
 }
