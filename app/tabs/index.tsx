@@ -63,7 +63,7 @@ export default function HomeScreen() {
       <Text style={{ fontSize: 20, marginTop: 32,}}>
         Categories
        </Text>
-       <FlatList
+       <FlatList style={{ marginTop: 20}}
 
         data={cards}
 
