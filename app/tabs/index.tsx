@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import CustomCard from '../components/details_categories';
 
 export default function HomeScreen() {
+  // Cards static data, replace with dynamic data of API
   const cards = [
 
   {
