@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text } from 'react-native';
 import CustomCard from '../components/details_categories';
 
 export default function HomeScreen() {
@@ -55,7 +55,7 @@ export default function HomeScreen() {
 
 ];
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text>CURATED FLAVORS</Text>
       <Text style={{ fontSize: 30, marginTop: 16, fontWeight: 'bold' }}>
         The art of conscious discovery.
@@ -64,6 +64,7 @@ export default function HomeScreen() {
         Categories
        </Text>
        <FlatList style={{ marginTop: 20}}
+        scrollEnabled={false}
 
         data={cards}
 
@@ -91,14 +92,13 @@ export default function HomeScreen() {
         Refine by Taste
       </Text>
 
-      
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#fff',
     alignItems: 'stretch',
     padding: 20,
