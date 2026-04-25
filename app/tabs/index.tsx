@@ -97,6 +97,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'stretch',
-    padding: 16,
+    padding: 20,
     },
 });
