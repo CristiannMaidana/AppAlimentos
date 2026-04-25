@@ -86,8 +86,12 @@ export default function HomeScreen() {
           />
 
         )}
-
       />
+      <Text style={{ fontSize: 30, marginTop: 32 }}> 
+        Refine by Taste
+      </Text>
+
+      
     </View>
   );
 }
