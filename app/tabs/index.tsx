@@ -125,6 +125,7 @@ export default function HomeScreen() {
       </View>
 
     <Text style={{ fontSize: 30, marginTop: 32 }}>Global Brands</Text>
+    <Text style={{ fontSize: 16, marginTop: 10, marginBottom: 20 }}>Explored through the lens of quaility</Text>
     </ScrollView>
   );
 }
