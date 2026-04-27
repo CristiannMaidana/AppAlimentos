@@ -88,10 +88,9 @@ export default function HomeScreen() {
 
         )}
       />
-      <Text style={{ fontSize: 30, marginTop: 32 }}> 
-        Refine by Taste
-      </Text>
+      <Text style={{ fontSize: 30, marginTop: 32 }}> Refine by Taste</Text>
 
+      {/* List of buttons */}
       <View style={{ marginTop: 20, flexDirection: 'row', flexWrap: 'wrap' }}> 
         <Pressable style={styles.button} onPress={() => alert('Organic button pressed')}>
           <Text style={styles.textButton}>Organic</Text>
