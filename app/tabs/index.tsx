@@ -124,6 +124,7 @@ export default function HomeScreen() {
         </Pressable>
       </View>
 
+    <Text style={{ fontSize: 30, marginTop: 32 }}>Global Brands</Text>
     </ScrollView>
   );
 }
