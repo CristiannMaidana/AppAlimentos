@@ -1,4 +1,5 @@
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import BrandCard from '../components/details_brands';
 import CustomCard from '../components/details_categories';
 
 export default function HomeScreen() {
@@ -53,7 +54,36 @@ export default function HomeScreen() {
 
   },
 
-];
+  ];
+
+  // Brands static data, replace with dynamic data of API
+  const brands = [
+    {
+      id: '1',
+      title: 'NESTLE',
+      subTitle: 'nestle',
+      backgroundColor: '#d6f5d6',
+    },
+    {
+      id: '2',
+      title: 'COKE',
+      subTitle: 'coca-cola',
+      backgroundColor: '#d6ecff',
+    },
+    {
+      id: '3',
+      title: 'PEPSI',
+      subTitle: 'pepso',
+      backgroundColor: '#ffe4cc',
+    },
+    {
+      id: '4',
+      title: 'DANONE',
+      subTitle: 'danone',
+      backgroundColor: '#f4ddff',
+    },
+  ];
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text>CURATED FLAVORS</Text>
@@ -126,6 +156,21 @@ export default function HomeScreen() {
 
     <Text style={{ fontSize: 30, marginTop: 32 }}>Global Brands</Text>
     <Text style={{ fontSize: 16, marginTop: 10, marginBottom: 20 }}>Explored through the lens of quaility</Text>
+    <FlatList
+      style={{ marginTop: 20 }}
+      scrollEnabled={false}
+      data={brands}
+      keyExtractor={(item) => item.id}
+      numColumns={2}
+      renderItem={({ item }) => (
+        <BrandCard
+          title={item.title}
+          subTitle={item.subTitle}
+          backgroundColor={item.backgroundColor}
+          onPress={() => alert(item.title)}
+        />
+      )}
+    />
     </ScrollView>
   );
 }
