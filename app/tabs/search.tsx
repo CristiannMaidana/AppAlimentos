@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import ProductSheet from '../components/products_sheet';
+import SearchBar from '../components/search_bar';
 
 export default function SearchScreen() {
   return (
@@ -11,6 +12,10 @@ export default function SearchScreen() {
       <Text style={{ fontSize: 20, color: '#666' }}>
         numero ITEMS FOUND
       </Text>
+
+      <View style={{marginTop: 20}}>
+        <SearchBar itemSearch="" onSearch={(text) => console.log(text)} />
+      </View>
 
       <View style={styles.productSheetContainer}>
         <ProductSheet
