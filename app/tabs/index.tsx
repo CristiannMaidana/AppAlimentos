@@ -1,6 +1,7 @@
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import BrandCard from '../components/details_brands';
 import CustomCard from '../components/details_categories';
+import FloatingButton from '../components/floating_button';
 
 export default function HomeScreen() {
   // Cards static data, replace with dynamic data of API
@@ -172,6 +173,11 @@ export default function HomeScreen() {
           onPress={() => alert(item.title)}
         />
       )}
+    />
+    <FloatingButton
+      iconName="search"
+      backgroundColor="#13691e"
+      onPress={() => alert('Floating button pressed')}
     />
     </ScrollView>
   );
