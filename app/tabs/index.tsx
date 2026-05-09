@@ -86,109 +86,106 @@ export default function HomeScreen() {
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text>CURATED FLAVORS</Text>
-      <Text style={{ fontSize: 30, marginTop: 16, fontWeight: 'bold' }}>
-        The art of conscious discovery.
-      </Text>
-      <Text style={{ fontSize: 30, marginTop: 32,}}>
-        Categories
-       </Text>
-       <FlatList style={{ marginTop: 20}}
-        scrollEnabled={false}
-
-        data={cards}
-
-        keyExtractor={(item) => item.id}
-
-        numColumns={2}
-
-        renderItem={({ item }) => (
-
-          <CustomCard
-
-            title={item.title}
-
-            image={item.image}
-
-            backgroundColor={item.backgroundColor}
-
-            onPress={() => alert(item.title)}
-
-          />
-
-        )}
-      />
-      <Text style={{ fontSize: 30, marginTop: 32 }}> Refine by Taste</Text>
-
-      {/* List of buttons */}
-      <View style={{ marginTop: 20, flexDirection: 'row', flexWrap: 'wrap' }}> 
-        <Pressable style={styles.button} onPress={() => alert('Organic button pressed')}>
-          <Text style={styles.textButton}>Organic</Text>
-        </Pressable>  
-        <Pressable style={styles.button} onPress={() => alert('Vegan button pressed')}>
-          <Text style={styles.textButton}>Vegan</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('Vegetarian button pressed')}>
-          <Text style={styles.textButton}>Vegetarian</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('Gluten-free button pressed')}>
-          <Text style={styles.textButton}>Gluten-free</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('no-added-sugar button pressed')}>
-          <Text style={styles.textButton}>no-added-sugar</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('fair-trade button pressed')}>
-          <Text style={styles.textButton}>fair-trade</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('lactose-free button pressed')}>
-          <Text style={styles.textButton}>lactose-free</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('palm-oil-free button pressed')}>
-          <Text style={styles.textButton}>palm-oil-free</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('low-fat button pressed')}>
-          <Text style={styles.textButton}>high-fiber</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => alert('low-fat button pressed')}>
-          <Text style={styles.textButton}>low-fat</Text>
-        </Pressable>
-      </View>
-
-    
-    {/* Brands section */}
-    <Text style={{ fontSize: 30, marginTop: 32 }}>Global Brands</Text>
-    <Text style={{ fontSize: 16, marginTop: 10, marginBottom: 20 }}>Explored through the lens of quaility</Text>
-    <FlatList
-      style={{ marginTop: 20 }}
-      scrollEnabled={false}
-      data={brands}
-      keyExtractor={(item) => item.id}
-      numColumns={2}
-      renderItem={({ item }) => (
-        <BrandCard
-          title={item.title}
-          subTitle={item.subTitle}
-          backgroundColor={item.backgroundColor}
-          onPress={() => alert(item.title)}
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text>CURATED FLAVORS</Text>
+        <Text style={{ fontSize: 30, marginTop: 16, fontWeight: 'bold' }}>
+          The art of conscious discovery.
+        </Text>
+        <Text style={{ fontSize: 30, marginTop: 32 }}>
+          Categories
+        </Text>
+        <FlatList
+          style={{ marginTop: 20 }}
+          scrollEnabled={false}
+          data={cards}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <CustomCard
+              title={item.title}
+              image={item.image}
+              backgroundColor={item.backgroundColor}
+              onPress={() => alert(item.title)}
+            />
+          )}
         />
-      )}
-    />
-    <FloatingButton
-      iconName="search"
-      backgroundColor="#13691e"
-      onPress={() => alert('Floating button pressed')}
-    />
-    </ScrollView>
+        <Text style={{ fontSize: 30, marginTop: 32 }}> Refine by Taste</Text>
+
+        <View style={{ marginTop: 20, flexDirection: 'row', flexWrap: 'wrap' }}>
+          <Pressable style={styles.button} onPress={() => alert('Organic button pressed')}>
+            <Text style={styles.textButton}>Organic</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('Vegan button pressed')}>
+            <Text style={styles.textButton}>Vegan</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('Vegetarian button pressed')}>
+            <Text style={styles.textButton}>Vegetarian</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('Gluten-free button pressed')}>
+            <Text style={styles.textButton}>Gluten-free</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('no-added-sugar button pressed')}>
+            <Text style={styles.textButton}>no-added-sugar</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('fair-trade button pressed')}>
+            <Text style={styles.textButton}>fair-trade</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('lactose-free button pressed')}>
+            <Text style={styles.textButton}>lactose-free</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('palm-oil-free button pressed')}>
+            <Text style={styles.textButton}>palm-oil-free</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('low-fat button pressed')}>
+            <Text style={styles.textButton}>high-fiber</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={() => alert('low-fat button pressed')}>
+            <Text style={styles.textButton}>low-fat</Text>
+          </Pressable>
+        </View>
+
+        <Text style={{ fontSize: 30, marginTop: 32 }}>
+          Global Brands
+        </Text>
+        <Text style={{ fontSize: 16, marginTop: 10, marginBottom: 20 }}>
+          Explored through the lens of quaility
+        </Text>
+        <FlatList
+          style={{ marginTop: 20 }}
+          scrollEnabled={false}
+          data={brands}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <BrandCard
+              title={item.title}
+              subTitle={item.subTitle}
+              backgroundColor={item.backgroundColor}
+              onPress={() => alert(item.title)}
+            />
+          )}
+        />
+      </ScrollView>
+      <FloatingButton
+        iconName="search"
+        backgroundColor="#13691e"
+        onPress={() => alert('Floating button pressed')}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   container: {
     flexDirection: 'column',
     backgroundColor: '#fff',
     alignItems: 'stretch',
     padding: 20,
+    paddingBottom: 100,
   },
   button: {
     margin: 10,
