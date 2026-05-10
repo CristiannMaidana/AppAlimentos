@@ -1,8 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import ProductSheet from '../components/products_sheet';
 import SearchBar from '../components/search_bar';
 
 export default function SearchScreen() {
+  const products = [
+    {
+      id: '1',
+      title: 'Organic Cold Pressed Kale & Ginder',
+      description: 'GREEN GARDEN CO.',
+      noteNutritional: 'A',
+      noteEcoScore: 'A+',
+    },
+  ];
+
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 37, fontWeight: 'bold', marginBottom: 5 }}>
@@ -17,15 +27,21 @@ export default function SearchScreen() {
         <SearchBar itemSearch="" onSearch={(text) => console.log(text)} />
       </View>
 
-      <View style={styles.productSheetContainer}>
-        <ProductSheet
-          title="Organic Cold Pressed Kale & Ginder"
-          description="GREEN GARDEN CO."
-          noteNutritional="A"
-          noteEcoScore="A+"
-          onPressed={() => alert("Product pressed")}
-        />
-      </View>
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.productSheetContainer}>
+            <ProductSheet
+              title={item.title}
+              description={item.description}
+              noteNutritional={item.noteNutritional}
+              noteEcoScore={item.noteEcoScore}
+              onPressed={() => alert("Product pressed")}
+            />
+          </View>
+        )}
+      />
     </View>
   );
 }
