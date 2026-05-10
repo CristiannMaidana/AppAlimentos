@@ -1,9 +1,11 @@
-import { ScrollView } from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 
 export default function FavoritesScreen() {
     return (
-        <ScrollView style={{ backgroundColor: '#f7f8f9', padding: 20 }}>
-            
+    <View>
+        <Image style={{ height: 300, backgroundColor: '#f16558'}}></Image>
+        <ScrollView style={{ backgroundColor: '#f5f6f7', paddingHorizontal: 20 }}>
         </ScrollView>
+    </View>
     );
 }
