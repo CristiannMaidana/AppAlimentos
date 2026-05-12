@@ -1,3 +1,5 @@
+import { StyleSheet, View } from 'react-native';
+
 
 type ValuesNutritionalProps = {
     energy: string;
@@ -19,5 +21,19 @@ export default function ValuesNutritional({
     fiber, 
     proteins, 
     salt}: ValuesNutritionalProps) {
-    return 
+    return (
+        <View style={styles.containerNutritionalValue}>
+        </View>
+    );
 };
+
+const styles = StyleSheet.create({
+    containerNutritionalValue: {
+        borderWidth: 1,
+        borderColor: '#e0e0e0',
+        backgroundColor: '#ffffß',
+        borderRadius: 30,
+        alignItems: 'center',
+        margin: 20,
+    },
+});
