@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import DetailsProduct from '../components/details_product';
 
@@ -20,9 +21,12 @@ export default function FavoritesScreen() {
         <View style={styles.containerIngredients}>
             <Text>Ingredients</Text>
             <Text>Water, Oats (10%), Rapeseed oil, Minerals (Calcium carbonate, Dibasic calcium phosphate, Potassium iodide), Salt, Vitamins (D2, Riboflavin, B12).</Text>
-            <View style={{ backgroundColor: '#f4ecec', padding: 10, borderRadius: 10, alignSelf: 'flex-start', marginTop: 10, alignItems: 'center', gap: 5 }}>
-                <Text style={{ color: '#aa201e' }}>ALLERGEN INFORMATION</Text>
-                <Text style={{ color: '#8a3633' }}>Contains gluten (oats). Dairy-free and soy-free.</Text>
+            <View style={styles.containerAllergen}>
+                <Ionicons name="warning" size={30} color="#aa201e" />
+                <View style={{ gap: 5, paddingLeft: 10, }}>
+                    <Text style={{ color: '#aa201e' }}>ALLERGEN INFORMATION</Text>
+                    <Text style={{ color: '#8a3633' }}>Contains gluten (oats). Dairy-free and soy-free.</Text>
+                </View>
             </View>
         </View>
     </ScrollView>
@@ -60,4 +64,14 @@ const styles = StyleSheet.create({
         padding: 30, 
         gap: 10
     },
+    containerAllergen: {
+        backgroundColor: '#f4ecec', 
+        padding: 20, 
+        borderRadius: 10, 
+        margin: 20, 
+        alignItems: 'stretch', 
+        gap: 5, 
+        flexDirection: 'row', 
+        justifyContent: 'space-between'
+    }
 });
