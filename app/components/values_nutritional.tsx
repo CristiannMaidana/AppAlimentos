@@ -10,6 +10,7 @@ type ValuesNutritionalProps = {
     fiber: string;
     proteins: string;
     salt: string;
+    valueNutritional: string;
 }
 
 export default function ValuesNutritional({
@@ -20,9 +21,11 @@ export default function ValuesNutritional({
     sugars, 
     fiber, 
     proteins, 
-    salt}: ValuesNutritionalProps) {
+    salt, 
+    valueNutritional}: ValuesNutritionalProps) {
     return (
         <View style={styles.containerNutritionalValue}>
+
         </View>
     );
 };
