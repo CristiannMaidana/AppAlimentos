@@ -31,7 +31,7 @@ export default function FavoritesScreen() {
             </View>
         </View>
 
-        <ValuesNutritional 
+        <ValuesNutritional
             energy="193 kJ"
             fat="1.5 g"
             saturatedFat="0.5 g"
@@ -40,6 +40,7 @@ export default function FavoritesScreen() {
             fiber="0.5 g"
             proteins="0.5 g"
             salt="0.1 g"
+            valueNutritional="Per 100ml"
         />
     </ScrollView>
     );
