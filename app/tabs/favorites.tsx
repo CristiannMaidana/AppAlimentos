@@ -21,7 +21,7 @@ export default function FavoritesScreen() {
             <Text>Ingredients</Text>
             <Text>Water, Oats (10%), Rapeseed oil, Minerals (Calcium carbonate, Dibasic calcium phosphate, Potassium iodide), Salt, Vitamins (D2, Riboflavin, B12).</Text>
             <View style={{ backgroundColor: '#f4ecec', padding: 10, borderRadius: 10, alignSelf: 'flex-start', marginTop: 10, alignItems: 'center', gap: 5 }}>
-                <Text style={{ color: '#aa201e' }}>Allergens: Oats</Text>
+                <Text style={{ color: '#aa201e' }}>ALLERGEN INFORMATION</Text>
                 <Text style={{ color: '#8a3633' }}>Contains gluten (oats). Dairy-free and soy-free.</Text>
             </View>
         </View>
