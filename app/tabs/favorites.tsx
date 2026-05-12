@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     },
     bottomSection: {
         backgroundColor: '#f5f6f7',
-        marginBottom: 28,
+        marginBottom: 8,
     },
     detailsWrapper: {
         marginTop: -40,
@@ -55,10 +55,9 @@ const styles = StyleSheet.create({
         borderColor: '#e0e0e0', 
         backgroundColor: '#f3f4f5', 
         borderRadius: 30 , 
-        marginHorizontal: 20, 
-        marginBottom: 20, 
+        margin: 20,
         alignItems: 'center', 
-        padding: 20, 
+        padding: 30, 
         gap: 10
     },
 });
