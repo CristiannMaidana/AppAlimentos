@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import DetailsProduct from '../components/details_product';
+import ValuesNutritional from '../components/values_nutritional';
 
 export default function FavoritesScreen() {
     return (
@@ -29,6 +30,17 @@ export default function FavoritesScreen() {
                 </View>
             </View>
         </View>
+
+        <ValuesNutritional 
+            energy="193 kJ"
+            fat="1.5 g"
+            saturatedFat="0.5 g"
+            carbohydrates="1.0 g"
+            sugars="0.5 g"
+            fiber="0.5 g"
+            proteins="0.5 g"
+            salt="0.1 g"
+        />
     </ScrollView>
     );
 }
