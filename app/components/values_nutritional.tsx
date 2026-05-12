@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 
 type ValuesNutritionalProps = {
@@ -25,7 +25,7 @@ export default function ValuesNutritional({
     valueNutritional}: ValuesNutritionalProps) {
     return (
         <View style={styles.containerNutritionalValue}>
-
+            <Text>Nutritional Values({valueNutritional})</Text>
         </View>
     );
 };
