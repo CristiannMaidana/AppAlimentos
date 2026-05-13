@@ -25,7 +25,7 @@ export default function ValuesNutritional({
     valueNutritional}: ValuesNutritionalProps) {
     return (
         <View style={styles.containerNutritionalValue}>
-            <Text>Nutritional Values({valueNutritional})</Text>
+            <Text style={styles.text}>Nutritional Values({valueNutritional})</Text>
             <Text style={styles.text}>Energy {energy}</Text>
             <Text style={styles.text}>Fat {fat}</Text>
             <Text style={styles.text}>Saturated Fat {saturatedFat}</Text>
