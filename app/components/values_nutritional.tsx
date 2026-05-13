@@ -26,6 +26,14 @@ export default function ValuesNutritional({
     return (
         <View style={styles.containerNutritionalValue}>
             <Text>Nutritional Values({valueNutritional})</Text>
+            <Text style={styles.text}>Energy {energy}</Text>
+            <Text style={styles.text}>Fat {fat}</Text>
+            <Text style={styles.text}>Saturated Fat {saturatedFat}</Text>
+            <Text style={styles.text}>Carbohydrates {carbohydrates}</Text>
+            <Text style={styles.text}>Sugars {sugars}</Text>
+            <Text style={styles.text}>Fiber {fiber}</Text>
+            <Text style={styles.text}>Proteins {proteins}</Text>
+            <Text style={styles.text}>Salt {salt}</Text>
         </View>
     );
 };
@@ -38,5 +46,9 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: 'center',
         margin: 20,
+    },
+    text: {
+        fontSize: 16,
+        margin: 10,
     },
 });
