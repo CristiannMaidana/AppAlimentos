@@ -23,17 +23,26 @@ export default function ValuesNutritional({
     proteins, 
     salt, 
     valueNutritional}: ValuesNutritionalProps) {
+    const nutritionalRows = [
+        { label: 'Nutritional Values', value: `(${valueNutritional})` },
+        { label: 'Energy', value: energy },
+        { label: 'Fat', value: fat },
+        { label: 'Saturated Fat', value: saturatedFat },
+        { label: 'Carbohydrates', value: carbohydrates },
+        { label: 'Sugars', value: sugars },
+        { label: 'Fiber', value: fiber },
+        { label: 'Proteins', value: proteins },
+        { label: 'Salt', value: salt },
+    ];
+
     return (
         <View style={styles.containerNutritionalValue}>
-            <Text style={styles.text}>Nutritional Values({valueNutritional})</Text>
-            <Text style={styles.text}>Energy {energy}</Text>
-            <Text style={styles.text}>Fat {fat}</Text>
-            <Text style={styles.text}>Saturated Fat {saturatedFat}</Text>
-            <Text style={styles.text}>Carbohydrates {carbohydrates}</Text>
-            <Text style={styles.text}>Sugars {sugars}</Text>
-            <Text style={styles.text}>Fiber {fiber}</Text>
-            <Text style={styles.text}>Proteins {proteins}</Text>
-            <Text style={styles.text}>Salt {salt}</Text>
+            {nutritionalRows.map((item) => (
+                <View key={item.label} style={styles.row}>
+                    <Text style={styles.label}>{item.label}</Text>
+                    <Text style={styles.value}>{item.value}</Text>
+                </View>
+            ))}
         </View>
     );
 };
@@ -44,11 +53,23 @@ const styles = StyleSheet.create({
         borderColor: '#e0e0e0',
         backgroundColor: '#ffff',
         borderRadius: 30,
-        alignItems: 'center',
         margin: 20,
+        paddingHorizontal: 20,
     },
-    text: {
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 14,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e0e0e0',
+    },
+    label: {
         fontSize: 16,
-        margin: 10,
+        color: '#000000',
+    },
+    value: {
+        fontSize: 16,
+        color: '#666666',
     },
 });
