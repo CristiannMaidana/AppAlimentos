@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     containerNutritionalValue: {
         borderWidth: 1,
         borderColor: '#e0e0e0',
-        backgroundColor: '#ffffß',
+        backgroundColor: '#ffff',
         borderRadius: 30,
         alignItems: 'center',
         margin: 20,
