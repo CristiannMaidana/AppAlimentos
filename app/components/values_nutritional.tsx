@@ -37,8 +37,13 @@ export default function ValuesNutritional({
 
     return (
         <View style={styles.containerNutritionalValue}>
-            {nutritionalRows.map((item) => (
-                <View key={item.label} style={styles.row}>
+            {nutritionalRows.map((item, index) => (
+                <View
+                    key={item.label}
+                    style={[
+                        styles.row,
+                        (index === 0 || index === nutritionalRows.length - 1) && styles.rowWithoutBorder,
+                    ]}>
                     <Text style={[styles.label, item.indented && styles.labelIndented]}>{item.label}</Text>
                     <Text style={styles.value}>{item.value}</Text>
                 </View>
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         margin: 20,
         paddingHorizontal: 35,
-        paddingVertical: 35,
+        paddingVertical: 25,
     },
     row: {
         flexDirection: 'row',
@@ -64,6 +69,9 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         borderBottomWidth: 1,
         borderBottomColor: '#e0e0e0',
+    },
+    rowWithoutBorder: {
+        borderBottomWidth: 0,
     },
     label: {
         fontSize: 16,
