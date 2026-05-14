@@ -27,9 +27,9 @@ export default function ValuesNutritional({
         { label: 'Nutritional Values', value: `(${valueNutritional})` },
         { label: 'Energy', value: energy },
         { label: 'Fat', value: fat },
-        { label: '        - of which saturates', value: saturatedFat },
+        { label: '- of which saturates', value: saturatedFat, indented: true },
         { label: 'Carbohydrates', value: carbohydrates },
-        { label: '        - of which sugars', value: sugars },
+        { label: '- of which sugars', value: sugars, indented: true },
         { label: 'Fiber', value: fiber },
         { label: 'Proteins', value: proteins },
         { label: 'Salt', value: salt },
@@ -39,7 +39,7 @@ export default function ValuesNutritional({
         <View style={styles.containerNutritionalValue}>
             {nutritionalRows.map((item) => (
                 <View key={item.label} style={styles.row}>
-                    <Text style={styles.label}>{item.label}</Text>
+                    <Text style={[styles.label, item.indented && styles.labelIndented]}>{item.label}</Text>
                     <Text style={styles.value}>{item.value}</Text>
                 </View>
             ))}
@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 16,
         color: '#000000',
+    },
+    labelIndented: {
+        paddingLeft: 16,
     },
     value: {
         fontSize: 16,
