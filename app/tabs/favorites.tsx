@@ -34,12 +34,12 @@ export default function FavoritesScreen() {
         <ValuesNutritional
             energy="193 kJ"
             fat="1.5 g"
-            saturatedFat="0.5 g"
-            carbohydrates="1.0 g"
-            sugars="0.5 g"
-            fiber="0.5 g"
-            proteins="0.5 g"
-            salt="0.1 g"
+            saturatedFat="0.2 g"
+            carbohydrates="6.7 g"
+            sugars="4.1 g"
+            fiber="0.8 g"
+            proteins="1.0 g"
+            salt="0.10 g"
             valueNutritional="Per 100ml"
         />
     </ScrollView>
