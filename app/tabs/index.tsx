@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: 'column',
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f8f9',
     alignItems: 'stretch',
     padding: 20,
     paddingBottom: 100,
