@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     favoriteButtonActive: {
-        backgroundColor: 'rgba(10, 89, 24, 0.9)',
+        backgroundColor: 'rgba(255, 255, 255, 0.80)',
     },
     title: {
         fontSize: 15,
