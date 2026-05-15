@@ -88,10 +88,10 @@ export default function HomeScreen() {
   return (
     <View style={styles.screen}>
       <ScrollView contentContainerStyle={styles.container}>
-        <Text>CURATED FLAVORS</Text>
+        <Text style={{ color: '#436c45', fontSize: 16 }}>CURATED FLAVORS</Text>
         <Text style={{ fontSize: 30, marginTop: 16, fontWeight: 'bold' }}>
           The art of conscious discovery.
-        </Text>
+        </Text>1
         <Text style={{ fontSize: 30, marginTop: 32 }}>
           Categories
         </Text>
