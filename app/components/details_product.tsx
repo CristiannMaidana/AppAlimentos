@@ -1,4 +1,5 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 type DetailsProductProps = {
     title: string;
@@ -7,6 +8,8 @@ type DetailsProductProps = {
     noteEcoScore: string;
     notaNova: string;
     details: string[];
+    isFavorite?: boolean;
+    onToggleFavorite?: () => void;
 }
 
 export default function DetailsProduct({
@@ -15,57 +18,112 @@ export default function DetailsProduct({
     noteNutritional, 
     noteEcoScore, 
     notaNova, 
-    details}: DetailsProductProps) {
+    details,
+    isFavorite = false,
+    onToggleFavorite,
+}: DetailsProductProps) {
     return (
-        <View style={styles.container}>
-            <Text style={{ fontSize: 15, color: '#447949'}}>{title}</Text>
-            <Text style={{ fontSize: 50, color: '#000000', marginBottom: 20, fontWeight: 'bold', flexShrink: 1 }}>{subtitle}</Text>
-            
-            <View style={{ flexDirection: 'row', marginBottom: 20, gap: 13 }}>
-                <View style={styles.subContainer}>
-                    <Text style={styles.nutriLabel}>NUTRI-SCORE</Text>
-                    <View style={styles.nutriBadge}>
-                        <Text style={styles.nutriBadgeText}>{noteNutritional}</Text>
-                    </View>
-                </View>
+        <View style={styles.wrapper}>
+            <Pressable
+                onPress={onToggleFavorite}
+                style={[
+                    styles.favoriteButton,
+                    isFavorite && styles.favoriteButtonActive,
+                ]}
+                hitSlop={10}
+            >
+                <Ionicons
+                    name={isFavorite ? 'heart' : 'heart-outline'}
+                    size={30}
+                    color={isFavorite ? '#0a5918' : '#ffffff'}
+                />
+            </Pressable>
 
+            <View style={styles.container}>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.subtitle}>{subtitle}</Text>
                 
-                <View style={styles.subContainer}>
-                    <Text style={styles.nutriLabel}>NOVA GROUP</Text>
-                    <View style={[styles.nutriBadge, { backgroundColor: '#f7ce46' }]}>
-                        <Text style={[styles.nutriBadgeText, { color: '#000000' }]}>{notaNova}</Text>
+                <View style={styles.scoresRow}>
+                    <View style={styles.subContainer}>
+                        <Text style={styles.nutriLabel}>NUTRI-SCORE</Text>
+                        <View style={styles.nutriBadge}>
+                            <Text style={styles.nutriBadgeText}>{noteNutritional}</Text>
+                        </View>
                     </View>
-                </View>
 
-                <View style={styles.subContainer}>
-                    <Text style={[styles.nutriLabel,]}>ECO-SCORE</Text>
-                    <View style={[styles.nutriBadge, { backgroundColor: '#2e6c20' }]}>
-                        <Text style={[styles.nutriBadgeText]}>{noteEcoScore}</Text>
+                    
+                    <View style={styles.subContainer}>
+                        <Text style={styles.nutriLabel}>NOVA GROUP</Text>
+                        <View style={[styles.nutriBadge, { backgroundColor: '#f7ce46' }]}>
+                            <Text style={[styles.nutriBadgeText, { color: '#000000' }]}>{notaNova}</Text>
+                        </View>
                     </View>
+
+                    <View style={styles.subContainer}>
+                        <Text style={[styles.nutriLabel,]}>ECO-SCORE</Text>
+                        <View style={[styles.nutriBadge, { backgroundColor: '#2e6c20' }]}>
+                            <Text style={[styles.nutriBadgeText]}>{noteEcoScore}</Text>
+                        </View>
+                    </View>
+
+
                 </View>
-
-
+                
+                <ScrollView horizontal contentContainerStyle={styles.propertiesRow}>
+                    {details.map((detail, index) => (
+                        <View key={index} style={styles.containerPropieties}>
+                            <Text style={{ fontSize: 16, marginBottom: 5 }}>ENERGY</Text>
+                            <Text style={{ fontSize: 16, marginBottom: 5 }}>{detail}</Text>
+                        </View>
+                    ))}
+                </ScrollView>
             </View>
-            
-            <ScrollView horizontal contentContainerStyle={styles.propertiesRow}>
-                {details.map((detail, index) => (
-                    <View key={index} style={styles.containerPropieties}>
-                        <Text style={{ fontSize: 16, marginBottom: 5 }}>ENERGY</Text>
-                        <Text style={{ fontSize: 16, marginBottom: 5 }}>{detail}</Text>
-                    </View>
-                ))}
-            </ScrollView>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    wrapper: {
+        position: 'relative',
+    },
     container: {
+        zIndex: 1,
+        position: 'relative',
         padding: 30,
         backgroundColor: '#ffffff',
         borderRadius: 30,
         borderWidth: 1,
         borderColor: '#e0e0e0',
+    },
+    favoriteButton: {
+        position: 'absolute',
+        top: -48,
+        right: -2,
+        width: 70,
+        height: 70,
+        borderRadius: 46,
+        backgroundColor: 'rgba(255, 255, 255, 0.80)',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    favoriteButtonActive: {
+        backgroundColor: 'rgba(10, 89, 24, 0.9)',
+    },
+    title: {
+        fontSize: 15,
+        color: '#447949',
+    },
+    subtitle: {
+        fontSize: 50,
+        color: '#000000',
+        marginBottom: 20,
+        fontWeight: 'bold',
+        flexShrink: 1,
+    },
+    scoresRow: {
+        flexDirection: 'row',
+        marginBottom: 20,
+        gap: 13,
     },
     subContainer: {
         backgroundColor: '#f1f2f3', 
