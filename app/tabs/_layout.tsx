@@ -18,6 +18,11 @@ export default function TabLayout() {
         headerShown: true,
         headerTitle: 'Digital Epicurean',
         headerTitleAlign: 'center',
+        tabBarStyle: {
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          overflow: 'hidden',
+        },
         headerLeft: () => (
           <Pressable
             onPress={() => Alert.alert('Options', 'Options button touched')}
