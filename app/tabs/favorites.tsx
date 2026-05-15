@@ -16,6 +16,8 @@ export default function FavoritesScreen() {
                     noteEcoScore="A"
                     notaNova="1"
                     details={["193 kJ", "1.5 g", "1.0g", "detail1"]}
+                    isFavorite={true}
+                    onToggleFavorite={() => alert('Toggle favorite')}
                 />
             </View>
         </View>
