@@ -30,7 +30,7 @@ export default function CustomCard({
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'column',
-    height: 200,
+    height: 180,
     flex: 1,
     margin: 8,
     borderRadius: 20,
