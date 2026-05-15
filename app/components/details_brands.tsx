@@ -36,35 +36,52 @@ export default function CustomCard({
     ];
 
     return (
-    <Pressable
-      onPress={onPress}
-      style={[styles.card]}
-    >
-      <LinearGradient
-        colors={gradientColors}
-        start={{ x: 0.2, y: 0.15 }}
-        end={{ x: 0.85, y: 0.9 }}
-        style={styles.brandCircle}>
-        <View style={styles.circleHighlight} />
-        <Text style={styles.brandTitle}>{title}</Text>
-      </LinearGradient>
-      <Text style={styles.title}>{subTitle}</Text>
-    </Pressable>
+    <View style={styles.cardWrapper}>
+      <View style={[styles.cardContour, { backgroundColor }]} />
+      <Pressable
+        onPress={onPress}
+        style={styles.card}
+      >
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0.2, y: 0.15 }}
+          end={{ x: 0.85, y: 0.9 }}
+          style={styles.brandCircle}>
+          <View style={styles.circleHighlight} />
+          <Text style={styles.brandTitle}>{title}</Text>
+        </LinearGradient>
+        <Text style={styles.title}>{subTitle}</Text>
+      </Pressable>
+    </View>
   );
 }
 
 // Styles for the CustomCard component
 const styles = StyleSheet.create({
-  card: {
-    flexDirection: 'column',
-    height: 180,
+  cardWrapper: {
+    position: 'relative',
     flex: 1,
     margin: 8,
+  },
+  card: {
+    position: 'relative',
+    flexDirection: 'column',
+    height: 180,
     borderRadius: 20,
     backgroundColor: '#F3F4F5',
     justifyContent: 'center',
     alignItems: 'center'
     
+  },
+  cardContour: {
+    position: 'absolute',
+    top: 10,
+    right: 0,
+    bottom: -4,
+    left: 0,
+    borderRadius: 20,
+    opacity: 0.48,
+    elevation: 6,
   },
   title: {
     marginTop: 20,
