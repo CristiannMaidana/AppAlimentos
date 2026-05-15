@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { Image, Pressable, StyleSheet, Text } from 'react-native';
 
 type CustomCardProps = {
@@ -16,10 +17,16 @@ export default function CustomCard({
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.card, { backgroundColor }]}
+      style={styles.card}
     >
-      <Image source={{ uri: image }} style={styles.image} />
-      <Text style={styles.title}>{title}</Text>
+      <LinearGradient
+        colors={[backgroundColor, `${backgroundColor}B3`]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.gradient}>
+        <Image source={{ uri: image }} style={styles.image} />
+        <Text style={styles.title}>{title}</Text>
+      </LinearGradient>
     </Pressable>
   );
 }
@@ -31,6 +38,11 @@ const styles = StyleSheet.create({
     height: 200,
     flex: 1,
     margin: 8,
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  gradient: {
+    flex: 1,
     borderRadius: 16,
   },
   image: {
