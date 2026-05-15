@@ -1,4 +1,4 @@
-import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import BrandCard from '../components/details_brands';
 import CustomCard from '../components/details_categories';
 import FloatingButton from '../components/floating_button';
@@ -92,9 +92,16 @@ export default function HomeScreen() {
         <Text style={{ fontSize: 40, marginTop: 16, fontWeight: 'bold' }}>
           The art of <Text style={{ fontStyle: 'italic', color: '#005400' }}>conscious</Text> discovery.
         </Text>
-        <Text style={{ fontSize: 30, marginTop: 32 }}>
-          Categories
-        </Text>
+        <View style={{ marginTop: 32, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Text style={{ fontSize: 30 }}>
+            Categories
+          </Text>
+          <Pressable onPress={() => Alert.alert('Library', 'View Library touched')}>
+            <Text style={{ fontSize: 16, color: '#436c45', fontWeight: '600' }}>
+              View Library
+            </Text>
+          </Pressable>
+        </View>
         <FlatList
           style={{ marginTop: 20 }}
           scrollEnabled={false}
