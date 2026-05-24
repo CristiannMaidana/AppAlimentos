@@ -1,15 +1,20 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Alert, Pressable, Text, View } from 'react-native';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+
+const activeTabIconContainer = {
+  borderRadius: 999,
+  marginTop: 6,
+  paddingHorizontal: 12,
+  paddingVertical: 12,
+};
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
@@ -50,15 +55,19 @@ export default function TabLayout() {
             focused ? null : <Text style={{ fontSize: 12, color: '#000000' }}>Home</Text>
           ),
           tabBarIcon: ({ color, focused }) => (
-            <View style={{
-              backgroundColor: focused ? '#5ea05f' : 'transparent',
-              borderRadius: 999,
-              marginTop: 6,
-              paddingHorizontal: 12,
-              paddingVertical: 12,
-            }}>
-              <IconSymbol size={28} name="house.fill" color={color} />
-            </View>
+            focused ? (
+              <LinearGradient
+                colors={['#36703f', '#46944e']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={activeTabIconContainer}>
+                <IconSymbol size={28} name="house.fill" color="#ffffff" />
+              </LinearGradient>
+            ) : (
+              <View style={activeTabIconContainer}>
+                <IconSymbol size={28} name="house.fill" color={color} />
+              </View>
+            )
           ),
         }}
       />
@@ -70,15 +79,19 @@ export default function TabLayout() {
             focused ? null : <Text style={{ fontSize: 12, color: '#000000' }}>Search</Text>
           ),
           tabBarIcon: ({ color, focused }) => (
-            <View style={{
-              backgroundColor: focused ? '#5ea05f' : 'transparent',
-              borderRadius: 999,
-              marginTop: 6,
-              paddingHorizontal: 12,
-              paddingVertical: 12,
-            }}>
-              <IconSymbol size={28} name="magnifyingglass" color={color} />
-            </View>
+            focused ? (
+              <LinearGradient
+                colors={['#36703f', '#46944e']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={activeTabIconContainer}>
+                <IconSymbol size={28} name="magnifyingglass" color="#ffffff" />
+              </LinearGradient>
+            ) : (
+              <View style={activeTabIconContainer}>
+                <IconSymbol size={28} name="magnifyingglass" color={color} />
+              </View>
+            )
           ),
         }}
       />
@@ -90,15 +103,19 @@ export default function TabLayout() {
             focused ? null : <Text style={{ fontSize: 12, color: '#000000' }}>Favorites</Text>
           ),
           tabBarIcon: ({ color, focused }) => (
-            <View style={{
-              backgroundColor: focused ? '#5ea05f' : 'transparent',
-              borderRadius: 999,
-              marginTop: 6,
-              paddingHorizontal: 12,
-              paddingVertical: 12,
-            }}>
-              <IconSymbol size={28} name="heart.fill" color={color} />
-            </View>
+            focused ? (
+              <LinearGradient
+                colors={['#36703f', '#46944e']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={activeTabIconContainer}>
+                <IconSymbol size={28} name="heart.fill" color="#ffffff" />
+              </LinearGradient>
+            ) : (
+              <View style={activeTabIconContainer}>
+                <IconSymbol size={28} name="heart.fill" color={color} />
+              </View>
+            )
           ),
         }}
       />
