@@ -1,4 +1,5 @@
-import { Alert, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import BrandCard from './components/brand-card';
 import CategoryCard from './components/category-card';
@@ -131,6 +132,9 @@ const brands = [
 ];
 
 export default function HomeScreen() {
+  const [showAllCategories, setShowAllCategories] = useState(false);
+  const visibleCategories = showAllCategories ? categories : categories.slice(0, 4);
+
   return (
     <View style={styles.screen}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -141,15 +145,15 @@ export default function HomeScreen() {
 
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Categories</Text>
-          <Pressable onPress={() => Alert.alert('Library', 'View Library touched')}>
-            <Text style={styles.sectionLink}>View Library</Text>
+          <Pressable onPress={() => setShowAllCategories((current) => !current)}>
+            <Text style={styles.sectionLink}>{showAllCategories ? 'Show Less' : 'View All'}</Text>
           </Pressable>
         </View>
 
         <FlatList
           style={styles.categoriesList}
           scrollEnabled={false}
-          data={categories}
+          data={visibleCategories}
           keyExtractor={(item) => item.id}
           numColumns={2}
           renderItem={({ item }) => (
