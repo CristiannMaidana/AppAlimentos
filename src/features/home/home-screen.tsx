@@ -83,7 +83,7 @@ const brands = [
   {
     id: '3',
     title: 'PEPSI',
-    subTitle: 'pepso',
+    subTitle: 'pepsi',
     backgroundColor: '#ffe4cc',
   },
   {
@@ -91,6 +91,42 @@ const brands = [
     title: 'DANONE',
     subTitle: 'danone',
     backgroundColor: '#f4ddff',
+  },
+  {
+    id: '5',
+    title: 'KELLOGGS',
+    subTitle: 'kelloggs',
+    backgroundColor: '#d62828',
+  },
+  {
+    id: '6',
+    title: 'UNILEVER',
+    subTitle: 'unilever',
+    backgroundColor: '#4da3ff',
+  },
+  {
+    id: '7',
+    title: 'MONDELEZ',
+    subTitle: 'mondelez',
+    backgroundColor: '#7b4dff',
+  },
+  {
+    id: '8',
+    title: 'MARS',
+    subTitle: 'mars',
+    backgroundColor: '#ff6b57',
+  },
+  {
+    id: '9',
+    title: 'FERRERO',
+    subTitle: 'ferrero',
+    backgroundColor: '#b7792b',
+  },
+  {
+    id: '10',
+    title: 'LACTAILS',
+    subTitle: 'lactails',
+    backgroundColor: '#8fd3ff',
   },
 ];
 
