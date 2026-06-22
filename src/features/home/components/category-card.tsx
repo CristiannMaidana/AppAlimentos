@@ -1,16 +1,17 @@
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Image, Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 type CategoryCardProps = {
   title: string;
-  image?: string;
+  icon?: keyof typeof MaterialCommunityIcons.glyphMap;
   backgroundColor: string;
   onPress: () => void;
 };
 
 export default function CategoryCard({
   title,
-  image,
+  icon,
   backgroundColor,
   onPress,
 }: CategoryCardProps) {
@@ -21,7 +22,7 @@ export default function CategoryCard({
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.gradient}>
-        <Image source={{ uri: image }} style={styles.image} />
+        {icon ? <MaterialCommunityIcons name={icon} size={54} color="#fff" style={styles.icon} /> : null}
         <Text style={styles.title}>{title}</Text>
       </LinearGradient>
     </Pressable>
@@ -41,11 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 16,
   },
-  image: {
-    width: 50,
-    height: 60,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    borderRadius: 10,
+  icon: {
     position: 'absolute',
     top: 20,
     right: 20,
@@ -54,7 +51,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     left: 20,
-    fontSize: 24,
+    right: 20,
+    fontSize: 20,
+    lineHeight: 24,
     fontWeight: '600',
     color: '#fff',
   },
