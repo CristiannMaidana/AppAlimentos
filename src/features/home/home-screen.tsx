@@ -4,30 +4,66 @@ import BrandCard from './components/brand-card';
 import CategoryCard from './components/category-card';
 import FloatingButton from './components/floating-button';
 
-const cards = [
+const categories = [
   {
     id: '1',
-    title: 'Pizza',
-    image: 'https://via.placeholder.com/100',
-    backgroundColor: '#fdd835',
+    title: 'beverages',
+    icon: 'cup-water',
+    backgroundColor: '#2887c6',
   },
   {
     id: '2',
-    title: 'Burger',
-    image: 'https://via.placeholder.com/100',
-    backgroundColor: '#81c784',
+    title: 'dairies',
+    icon: 'bottle-tonic-plus',
+    backgroundColor: '#fee08c',
   },
   {
     id: '3',
-    title: 'Pasta',
-    image: 'https://via.placeholder.com/100',
-    backgroundColor: '#64b5f6',
+    title: 'snacks',
+    icon: 'food-variant',
+    backgroundColor: '#e64172',
   },
   {
     id: '4',
-    title: 'Salad',
-    image: 'https://via.placeholder.com/100',
-    backgroundColor: '#ff8a65',
+    title: 'breakfasts',
+    icon: 'coffee',
+    backgroundColor: '#fa993f',
+  },
+  {
+    id: '5',
+    title: 'desserts',
+    icon: 'cupcake',
+    backgroundColor: '#775ee7',
+  },
+  {
+    id: '6',
+    title: 'chocolates',
+    icon: 'candy',
+    backgroundColor: '#35322f',
+  },
+  {
+    id: '7',
+    title: 'biscuits-and-cakes',
+    icon: 'cookie',
+    backgroundColor: '#a55a1e',
+  },
+  {
+    id: '8',
+    title: 'cereals-and-potatoes',
+    icon: 'grain',
+    backgroundColor: '#258789',
+  },
+  {
+    id: '9',
+    title: 'meals',
+    icon: 'silverware-fork-knife',
+    backgroundColor: '#d3372c',
+  },
+  {
+    id: '10',
+    title: 'plant-based-foods',
+    icon: 'leaf',
+    backgroundColor: '#32ad5f',
   },
 ];
 
@@ -77,13 +113,13 @@ export default function HomeScreen() {
         <FlatList
           style={styles.categoriesList}
           scrollEnabled={false}
-          data={cards}
+          data={categories}
           keyExtractor={(item) => item.id}
           numColumns={2}
           renderItem={({ item }) => (
             <CategoryCard
               title={item.title}
-              image={item.image}
+              icon={item.icon as any}
               backgroundColor={item.backgroundColor}
               onPress={() => alert(item.title)}
             />
