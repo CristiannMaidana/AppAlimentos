@@ -3,9 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 type ValuesNutritionalProps = {
   energy: string;
   fat: string;
-  saturatedFat: string;
   carbohydrates: string;
-  sugars: string;
   fiber: string;
   proteins: string;
   salt: string;
@@ -15,21 +13,17 @@ type ValuesNutritionalProps = {
 export default function ValuesNutritional({
   energy,
   fat,
-  saturatedFat,
   carbohydrates,
-  sugars,
   fiber,
   proteins,
   salt,
   valueNutritional,
 }: ValuesNutritionalProps) {
-  const nutritionalRows = [
+  const nutritionalRows: { label: string; value: string; indented?: boolean }[] = [
     { label: 'Nutritional Values', value: `(${valueNutritional})` },
     { label: 'Energy', value: energy },
     { label: 'Fat', value: fat },
-    { label: '- of which saturates', value: saturatedFat, indented: true },
     { label: 'Carbohydrates', value: carbohydrates },
-    { label: '- of which sugars', value: sugars, indented: true },
     { label: 'Fiber', value: fiber },
     { label: 'Proteins', value: proteins },
     { label: 'Salt', value: salt },
