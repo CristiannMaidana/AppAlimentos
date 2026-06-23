@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import DetailsProduct from './components/details-product';
@@ -29,23 +28,12 @@ export default function FavoritesScreen() {
           calcium phosphate, Potassium iodide), Salt, Vitamins (D2, Riboflavin,
           B12).
         </Text>
-        <View style={styles.containerAllergen}>
-          <Ionicons name="warning" size={30} color="#aa201e" />
-          <View style={styles.allergenTextGroup}>
-            <Text style={styles.allergenTitle}>ALLERGEN INFORMATION</Text>
-            <Text style={styles.allergenText}>
-              Contains gluten (oats). Dairy-free and soy-free.
-            </Text>
-          </View>
-        </View>
       </View>
 
       <ValuesNutritional
         energy="193 kJ"
         fat="1.5 g"
-        saturatedFat="0.2 g"
         carbohydrates="6.7 g"
-        sugars="4.1 g"
         fiber="0.8 g"
         proteins="1.0 g"
         salt="0.10 g"
