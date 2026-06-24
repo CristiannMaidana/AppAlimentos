@@ -7,6 +7,6 @@ export type Product = {
     ingredientsText: string;
     novaGroup: number;
     nutriscoreGrade: string;
-    nutrientes: Nutriments;
+    nutriments: Nutriments;
     nutriotionalDataPer: string;
 };
