@@ -5,7 +5,7 @@ export type Product = {
     productName: string;
     ecoscoreGrade?: string;
     ingredientsText: string;
-    novaGroup: number;
+    novaGroup: string;
     nutriscoreGrade: string;
     nutriments: Nutriments;
     nutriotionalDataPer: string;
