@@ -26,11 +26,7 @@ export default function FavoritesScreen() {
       </View>
       <View style={styles.containerIngredients}>
         <Text>Ingredients</Text>
-        <Text>
-          Water, Oats (10%), Rapeseed oil, Minerals (Calcium carbonate, Dibasic
-          calcium phosphate, Potassium iodide), Salt, Vitamins (D2, Riboflavin,
-          B12).
-        </Text>
+        <Text>{product?.ingredientsText}</Text>
       </View>
 
       <ValuesNutritional
