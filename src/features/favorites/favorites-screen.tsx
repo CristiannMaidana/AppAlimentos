@@ -34,13 +34,13 @@ export default function FavoritesScreen() {
       </View>
 
       <ValuesNutritional
-        energy="193 kJ"
-        fat="1.5 g"
-        carbohydrates="6.7 g"
-        fiber="0.8 g"
-        proteins="1.0 g"
-        salt="0.10 g"
-        valueNutritional="Per 100ml"
+        energy={`${product?.nutriments?.energyKcal ?? ''} ${product?.nutriments?.energyKcal_unit ?? ''}/ ${product?.nutriments?.energyKj} ${product?.nutriments?.energyKjUnit}`}
+        fat={`${product?.nutriments?.fat} ${product?.nutriments?.fatUnit}`}
+        carbohydrates={`${product?.nutriments?.carbohydrates} ${product?.nutriments?.carbohydratesUnit}`}
+        fiber=''
+        proteins={`${product?.nutriments?.proteins} ${product?.nutriments?.proteinsUnit}`}
+        salt={`${product?.nutriments?.salt} ${product?.nutriments?.saltUnit}`}
+        valueNutritional={product?.nutriotionalDataPer ?? ''}
       />
     </ScrollView>
   );
