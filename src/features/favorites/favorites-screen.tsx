@@ -2,8 +2,11 @@ import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import DetailsProduct from './components/details-product';
 import ValuesNutritional from './components/values-nutritional';
+import { useProducts } from './hooks/useProducts';
 
 export default function FavoritesScreen() {
+  const { product, loading, error } = useProducts();
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <Image style={styles.image} />
@@ -11,10 +14,10 @@ export default function FavoritesScreen() {
         <View style={styles.detailsWrapper}>
           <DetailsProduct
             title="OATLY"
-            subtitle="The Original Oatly Oat Milk"
-            noteNutritional="A"
-            noteEcoScore="A"
-            notaNova="1"
+            subtitle={product?.productName ?? ''}
+            noteNutritional={product?.nutriscoreGrade ?? ''}
+            noteEcoScore={product?.ecoscoreGrade ?? ''}
+            notaNova={product?.novaGroup ?? ''}
             details={['193 kJ', '1.5 g', '1.0g', 'detail1']}
             isFavorite
             onToggleFavorite={() => alert('Toggle favorite')}
