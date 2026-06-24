@@ -18,7 +18,7 @@ export default function FavoritesScreen() {
             noteNutritional={product?.nutriscoreGrade ?? ''}
             noteEcoScore={product?.ecoscoreGrade ?? ''}
             notaNova={product?.novaGroup ?? ''}
-            details={['193 kJ', '1.5 g', '1.0g', 'detail1']}
+            details={[`${product?.nutriments?.energyKj} ${product?.nutriments?.energyKjUnit}`, `${product?.nutriments?.fat} ${product?.nutriments?.fatUnit}`, `${product?.nutriments?.proteins} ${product?.nutriments?.proteinsUnit}`, 'detail1']}
             isFavorite
             onToggleFavorite={() => alert('Toggle favorite')}
           />
