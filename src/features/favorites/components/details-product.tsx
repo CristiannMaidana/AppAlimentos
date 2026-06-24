@@ -1,6 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+const detailLabels = ['ENERGY', 'FAT', 'PROTEIN', 'detail'];
+
 type DetailsProductProps = {
   title: string;
   subtitle: string;
@@ -65,7 +67,7 @@ export default function DetailsProduct({
         <ScrollView horizontal contentContainerStyle={styles.propertiesRow}>
           {details.map((detail, index) => (
             <View key={index} style={styles.containerPropieties}>
-              <Text style={styles.propertyLabel}>ENERGY</Text>
+              <Text style={styles.propertyLabel}>{detailLabels[index] ?? 'detail'}</Text>
               <Text style={styles.propertyValue}>{detail}</Text>
             </View>
           ))}
