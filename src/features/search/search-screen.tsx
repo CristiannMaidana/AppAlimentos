@@ -1,9 +1,12 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
+import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import ProductSheet from './components/product-sheet';
-import SearchBar from './components/search-bar';
 
 export default function SearchScreen() {
+  const [itemSearch, setItemSearch] = useState('');
+
   const products = [
     {
       id: '1',
@@ -20,7 +23,16 @@ export default function SearchScreen() {
       <Text style={styles.subtitle}>numero ITEMS FOUND</Text>
 
       <View style={styles.searchBarWrapper}>
-        <SearchBar itemSearch="" onSearch={(text) => console.log(text)} />
+        <View style={styles.serchBar}>
+          <Ionicons name="search" size={24} color="#94959e" style={styles.icon} />
+          <TextInput
+            value={itemSearch}
+            onChangeText={setItemSearch}
+            placeholder="Search juices, craft sodas, teas..."
+            placeholderTextColor="#94959e"
+            style={styles.input}
+          />
+        </View>
       </View>
 
       <FlatList
@@ -63,5 +75,22 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  input: {
+    flex: 1,
+    fontSize: 20,
+    color: '#94959e',
+    marginLeft: 10,
+  },
+  serchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f1f2f3',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    height: 60,
+  },
+  icon: {
+    marginLeft: 10,
   },
 });
