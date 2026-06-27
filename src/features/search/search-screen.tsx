@@ -69,7 +69,7 @@ export default function SearchScreen() {
               noteEcoScore={item.ecoscoreGrade}
               onPressed={() =>
                 router.push({
-                  pathname: '/(tabs)/favorites',
+                  pathname: '/(tabs)/products/[code]',
                   params: { code: item.code },
                 })
               }
