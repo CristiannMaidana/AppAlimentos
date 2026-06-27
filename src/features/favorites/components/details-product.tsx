@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-const detailLabels = ['ENERGY', 'FAT', 'PROTEIN', 'detail'];
+const detailLabels = ['ENERGY', 'FAT', 'PROTEIN', 'CARBOHYDRATES'];
 
 type DetailsProductProps = {
   title: string;
