@@ -1,70 +1,81 @@
+import { ChocolateFreeIcons, Coffee02FreeIcons, CookieFreeIcons, Cupcake03Icon, DrinkFreeIcons, LeafFreeIcons, MilkBottleFreeIcons, PopcornFreeIcons, Restaurant02FreeIcons, WheatFreeIcons } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react-native';
 import { router } from 'expo-router';
-import { useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import BrandCard from './components/brand-card';
 import CategoryCard from './components/category-card';
 import FloatingButton from './components/floating-button';
 
-const categories = [
+// Create type for handle the value of the icons
+type CategoryItem = {
+  id: string;
+  title: string;
+  icon: ComponentProps<typeof CategoryCard>['icon'];
+  backgroundColor: string;
+};
+
+// Create a list for categories
+const categories: CategoryItem[] = [
   {
     id: '1',
     title: 'beverages',
-    icon: 'cup-water',
+    icon: <HugeiconsIcon icon={DrinkFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#2887c6',
   },
   {
     id: '2',
     title: 'dairies',
-    icon: 'bottle-tonic-plus',
+    icon: <HugeiconsIcon icon={MilkBottleFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#fee08c',
   },
   {
     id: '3',
     title: 'snacks',
-    icon: 'food-variant',
+    icon: <HugeiconsIcon icon={PopcornFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#e64172',
   },
   {
     id: '4',
     title: 'breakfasts',
-    icon: 'coffee',
+    icon: <HugeiconsIcon icon={Coffee02FreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#fa993f',
   },
   {
     id: '5',
     title: 'desserts',
-    icon: 'cupcake',
+    icon: <HugeiconsIcon icon={Cupcake03Icon} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#775ee7',
   },
   {
     id: '6',
     title: 'chocolates',
-    icon: 'candy',
+    icon: <HugeiconsIcon icon={ChocolateFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#35322f',
   },
   {
     id: '7',
     title: 'biscuits-and-cakes',
-    icon: 'cookie',
+    icon: <HugeiconsIcon icon={CookieFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#a55a1e',
   },
   {
     id: '8',
     title: 'cereals-and-potatoes',
-    icon: 'grain',
+    icon: <HugeiconsIcon icon={WheatFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#258789',
   },
   {
     id: '9',
     title: 'meals',
-    icon: 'silverware-fork-knife',
+    icon: <HugeiconsIcon icon={Restaurant02FreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#d3372c',
   },
   {
     id: '10',
     title: 'plant-based-foods',
-    icon: 'leaf',
+    icon: <HugeiconsIcon icon={LeafFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#32ad5f',
   },
 ];
@@ -167,7 +178,7 @@ export default function HomeScreen() {
           renderItem={({ item }) => (
             <CategoryCard
               title={item.title}
-              icon={item.icon as any}
+              icon={item.icon}
               backgroundColor={item.backgroundColor}
               onPress={() => goToSearch(item.title)}
             />
