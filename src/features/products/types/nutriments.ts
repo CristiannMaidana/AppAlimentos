@@ -1,0 +1,15 @@
+export type Nutriments = {
+      carbohydrates: string,
+      carbohydratesUnit: string,
+      energy: string,
+      energyKcal: string,
+      energyKcal_unit: string,
+      energyKj: string,
+      energyKjUnit: string,
+      fat: string,
+      fatUnit: string,
+      proteins: string,
+      proteinsUnit: string,
+      salt: string,
+      saltUnit: string,
+};
