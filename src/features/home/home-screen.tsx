@@ -1,20 +1,13 @@
 import { ChocolateFreeIcons, Coffee02FreeIcons, CookieFreeIcons, Cupcake03Icon, DrinkFreeIcons, LeafFreeIcons, MilkBottleFreeIcons, PopcornFreeIcons, Restaurant02FreeIcons, WheatFreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import { router } from 'expo-router';
-import { type ComponentProps, useState } from 'react';
+import { useState } from 'react';
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import BrandCard from './components/brand-card';
 import CategoryCard from './components/category-card';
 import FloatingButton from './components/floating-button';
-
-// Create type for handle the value of the icons
-type CategoryItem = {
-  id: string;
-  title: string;
-  icon: ComponentProps<typeof CategoryCard>['icon'];
-  backgroundColor: string;
-};
+import { CategoryItem } from './types/categoriaItem.home';
 
 // Create a list for categories
 const categories: CategoryItem[] = [
@@ -80,6 +73,7 @@ const categories: CategoryItem[] = [
   },
 ];
 
+// List of brands
 const brands = [
   {
     id: '1',
