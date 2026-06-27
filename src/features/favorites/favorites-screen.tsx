@@ -21,7 +21,7 @@ export default function FavoritesScreen() {
             noteNutritional={product?.nutriscoreGrade ?? ''}
             noteEcoScore={product?.ecoscoreGrade ?? ''}
             notaNova={product?.novaGroup ?? ''}
-            details={[`${product?.nutriments?.energyKj} ${product?.nutriments?.energyKjUnit}`, `${product?.nutriments?.fat} ${product?.nutriments?.fatUnit}`, `${product?.nutriments?.proteins} ${product?.nutriments?.proteinsUnit}`, 'detail1']}
+            details={[`${product?.nutriments?.energyKj} ${product?.nutriments?.energyKjUnit}`, `${product?.nutriments?.fat} ${product?.nutriments?.fatUnit}`, `${product?.nutriments?.proteins} ${product?.nutriments?.proteinsUnit}`, `${product?.nutriments?.carbohydrates}`]}
             isFavorite
             onToggleFavorite={() => alert('Toggle favorite')}
           />
