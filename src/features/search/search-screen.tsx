@@ -6,8 +6,15 @@ import ProductSheet from './components/product-sheet';
 import { useSearchProducts } from './hooks/useSearchProducts';
 
 export default function SearchScreen() {
-  const params = useLocalSearchParams<{ query?: string | string[] }>();
-  const searchQuery = Array.isArray(params.query) ? params.query[0] : params.query;
+  const params = useLocalSearchParams<{
+    brand?: string | string[];
+    label?: string | string[];
+    category?: string | string[];
+  }>();
+  const searchQuery =
+    (Array.isArray(params.brand) ? params.brand[0] : params.brand) ??
+    (Array.isArray(params.label) ? params.label[0] : params.label) ??
+    (Array.isArray(params.category) ? params.category[0] : params.category);
   const { textInput, setTextInput, products, loading, error } = useSearchProducts(searchQuery);
 
   // Text dinamyc for the count of items
