@@ -1,7 +1,8 @@
-export type ProductoSimply = {
-    code: string;
-    productName: string;
-    nutriscoreGrade: string;
-    ecoscoreGrade: string;
-    imageUrl: string;
-}
+export type ProductSimply = {
+  code: string;
+  productName: string;
+  brands: string;
+  nutriscoreGrade: string | null;
+  ecoscoreGrade: string | null;
+  imageUrl: string;
+};
