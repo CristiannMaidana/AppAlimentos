@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import DetailsProduct from './components/details-product';
@@ -5,7 +6,9 @@ import ValuesNutritional from './components/values-nutritional';
 import { useProducts } from './hooks/useProducts';
 
 export default function FavoritesScreen() {
-  const { product, loading, error } = useProducts();
+  const params = useLocalSearchParams<{ code?: string | string[] }>();
+  const productCode = Array.isArray(params.code) ? params.code[0] : params.code;
+  const { product, loading, error } = useProducts(productCode);
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
@@ -13,7 +16,7 @@ export default function FavoritesScreen() {
       <View style={styles.bottomSection}>
         <View style={styles.detailsWrapper}>
           <DetailsProduct
-            title="OATLY"
+            title={product?.brands ?? ''}
             subtitle={product?.productName ?? ''}
             noteNutritional={product?.nutriscoreGrade ?? ''}
             noteEcoScore={product?.ecoscoreGrade ?? ''}
@@ -26,7 +29,13 @@ export default function FavoritesScreen() {
       </View>
       <View style={styles.containerIngredients}>
         <Text>Ingredients</Text>
-        <Text>{product?.ingredientsText}</Text>
+        <Text>
+          {loading
+            ? 'Loading product...'
+            : error
+              ? error
+              : product?.ingredientsText || 'Select a product from search.'}
+        </Text>
       </View>
 
       <ValuesNutritional
