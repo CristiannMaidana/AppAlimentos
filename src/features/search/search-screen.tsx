@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import ProductSheet from './components/product-sheet';
@@ -64,7 +65,12 @@ export default function SearchScreen() {
               image={item.imageUrl}
               noteNutritional={item.nutriscoreGrade}
               noteEcoScore={item.ecoscoreGrade}
-              onPressed={() => alert('Product pressed')}
+              onPressed={() =>
+                router.push({
+                  pathname: '/(tabs)/favorites',
+                  params: { code: item.code },
+                })
+              }
             />
           </View>
         )}
