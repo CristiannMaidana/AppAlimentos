@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -135,6 +136,13 @@ export default function HomeScreen() {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const visibleCategories = showAllCategories ? categories : categories.slice(0, 4);
 
+  function goToSearch(query: string) {
+    router.push({
+      pathname: '/(tabs)/search',
+      params: { query },
+    });
+  }
+
   return (
     <View style={styles.screen}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -161,7 +169,7 @@ export default function HomeScreen() {
               title={item.title}
               icon={item.icon as any}
               backgroundColor={item.backgroundColor}
-              onPress={() => alert(item.title)}
+              onPress={() => goToSearch(item.title)}
             />
           )}
         />
@@ -169,34 +177,34 @@ export default function HomeScreen() {
         <Text style={styles.sectionTitleWithMargin}>Refine by Taste</Text>
 
         <View style={styles.tagsContainer}>
-          <Pressable style={styles.button} onPress={() => alert('Organic button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Organic')}>
             <Text style={styles.textButton}>Organic</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('Vegan button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Vegan')}>
             <Text style={styles.textButton}>Vegan</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('Vegetarian button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Vegetarian')}>
             <Text style={styles.textButton}>Vegetarian</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('Gluten-free button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Gluten-free')}>
             <Text style={styles.textButton}>Gluten-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('no-added-sugar button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('no-added-sugar')}>
             <Text style={styles.textButton}>no-added-sugar</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('fair-trade button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('fair-trade')}>
             <Text style={styles.textButton}>fair-trade</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('lactose-free button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('lactose-free')}>
             <Text style={styles.textButton}>lactose-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('palm-oil-free button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('palm-oil-free')}>
             <Text style={styles.textButton}>palm-oil-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('high-fiber button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('high-fiber')}>
             <Text style={styles.textButton}>high-fiber</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => alert('low-fat button pressed')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('low-fat')}>
             <Text style={styles.textButton}>low-fat</Text>
           </Pressable>
         </View>
@@ -215,7 +223,7 @@ export default function HomeScreen() {
               title={item.title}
               subTitle={item.subTitle}
               backgroundColor={item.backgroundColor}
-              onPress={() => alert(item.title)}
+              onPress={() => goToSearch(item.subTitle)}
             />
           )}
         />
@@ -224,7 +232,7 @@ export default function HomeScreen() {
       <FloatingButton
         iconName="search"
         backgroundColor="#13691e"
-        onPress={() => alert('Floating button pressed')}
+        onPress={() => router.push('/(tabs)/search')}
       />
     </View>
   );
