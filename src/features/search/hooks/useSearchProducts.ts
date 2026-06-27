@@ -3,12 +3,20 @@ import { useEffect, useRef, useState } from 'react';
 import { getProductSimply } from '../repository/product.search.repository';
 import { ProductSimply } from '../types/product.search';
 
-export function useSearchProducts() {
+export function useSearchProducts(initialSearch = '') {
   const [textInput, setTextInput] = useState('');
   const [products, setProducts] = useState<ProductSimply[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const requestIdRef = useRef(0);
+
+  useEffect(() => {
+    const normalizedSearch = initialSearch.trim();
+
+    setTextInput((currentValue) =>
+      currentValue === normalizedSearch ? currentValue : normalizedSearch
+    );
+  }, [initialSearch]);
 
   useEffect(() => {
     const searchValue = textInput.trim();
