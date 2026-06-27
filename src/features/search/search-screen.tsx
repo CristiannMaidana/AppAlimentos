@@ -1,12 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import ProductSheet from './components/product-sheet';
 import { useSearchProducts } from './hooks/useSearchProducts';
 
 export default function SearchScreen() {
-  const { textInput, setTextInput, products, loading, error } = useSearchProducts();
+  const params = useLocalSearchParams<{ query?: string | string[] }>();
+  const searchQuery = Array.isArray(params.query) ? params.query[0] : params.query;
+  const { textInput, setTextInput, products, loading, error } = useSearchProducts(searchQuery);
 
   // Text dinamyc for the count of items
   const subtitle =
