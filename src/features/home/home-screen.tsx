@@ -147,10 +147,33 @@ export default function HomeScreen() {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const visibleCategories = showAllCategories ? categories : categories.slice(0, 4);
 
-  function goToSearch(query: string) {
+  // Add type of search, limit for the 3 diferents options
+  function goToSearch(query: string, searchType: 'brands' | 'labels' | 'categories') {
+    if (searchType === 'brands') {
+      router.push({
+        pathname: '/(tabs)/search/brands/[brand]',
+        params: {
+          brand: query,
+        },
+      });
+      return;
+    }
+
+    if (searchType === 'labels') {
+      router.push({
+        pathname: '/(tabs)/search/labels/[label]',
+        params: {
+          label: query,
+        },
+      });
+      return;
+    }
+
     router.push({
-      pathname: '/(tabs)/search',
-      params: { query },
+      pathname: '/(tabs)/search/categories/[category]',
+      params: {
+        category: query,
+      },
     });
   }
 
@@ -180,7 +203,7 @@ export default function HomeScreen() {
               title={item.title}
               icon={item.icon}
               backgroundColor={item.backgroundColor}
-              onPress={() => goToSearch(item.title)}
+              onPress={() => goToSearch(item.title, 'categories')}
             />
           )}
         />
@@ -188,34 +211,34 @@ export default function HomeScreen() {
         <Text style={styles.sectionTitleWithMargin}>Refine by Taste</Text>
 
         <View style={styles.tagsContainer}>
-          <Pressable style={styles.button} onPress={() => goToSearch('Organic')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Organic', 'labels')}>
             <Text style={styles.textButton}>Organic</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('Vegan')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Vegan', 'labels')}>
             <Text style={styles.textButton}>Vegan</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('Vegetarian')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Vegetarian', 'labels')}>
             <Text style={styles.textButton}>Vegetarian</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('Gluten-free')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('Gluten-free', 'labels')}>
             <Text style={styles.textButton}>Gluten-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('no-added-sugar')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('no-added-sugar', 'labels')}>
             <Text style={styles.textButton}>no-added-sugar</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('fair-trade')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('fair-trade', 'labels')}>
             <Text style={styles.textButton}>fair-trade</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('lactose-free')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('lactose-free', 'labels')}>
             <Text style={styles.textButton}>lactose-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('palm-oil-free')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('palm-oil-free', 'labels')}>
             <Text style={styles.textButton}>palm-oil-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('high-fiber')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('high-fiber', 'labels')}>
             <Text style={styles.textButton}>high-fiber</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('low-fat')}>
+          <Pressable style={styles.button} onPress={() => goToSearch('low-fat', 'labels')}>
             <Text style={styles.textButton}>low-fat</Text>
           </Pressable>
         </View>
@@ -234,7 +257,7 @@ export default function HomeScreen() {
               title={item.title}
               subTitle={item.subTitle}
               backgroundColor={item.backgroundColor}
-              onPress={() => goToSearch(item.subTitle)}
+              onPress={() => goToSearch(item.subTitle, 'brands')}
             />
           )}
         />
