@@ -1,12 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 type ProductSheetProps = {
   title: string;
   description: string;
   image?: string;
-  noteNutritional?: string;
-  noteEcoScore?: string;
+  noteNutritional?: string | null;
+  noteEcoScore?: string | null;
   onPressed: () => void;
 };
 
@@ -21,7 +21,13 @@ export default function ProductSheet({
   return (
     <Pressable style={styles.container} onPress={onPressed}>
       <View style={styles.contentRow}>
-        <View style={styles.imagePlaceholder}>{image}</View>
+        <View style={styles.imagePlaceholder}>
+          {image ? (
+            <Image source={{ uri: image }} style={styles.image} resizeMode="cover" />
+          ) : (
+            <Ionicons name="image-outline" size={28} color="#b5b7bf" />
+          )}
+        </View>
 
         <View style={styles.textContent}>
           <Text style={styles.title}>{title}</Text>
@@ -29,11 +35,15 @@ export default function ProductSheet({
 
           <View style={styles.badgesRow}>
             <View style={[styles.badge, styles.nutriBadge]}>
-              <Text style={styles.nutriBadgeText}>NUTRI-SCORE {noteNutritional}</Text>
+              <Text style={styles.nutriBadgeText}>
+                NUTRI-SCORE {noteNutritional?.toUpperCase() ?? '-'}
+              </Text>
             </View>
 
             <View style={[styles.badge, styles.ecoBadge]}>
-              <Text style={styles.ecoBadgeText}>ECO-SCORE {noteEcoScore}</Text>
+              <Text style={styles.ecoBadgeText}>
+                ECO-SCORE {noteEcoScore?.toUpperCase() ?? '-'}
+              </Text>
             </View>
           </View>
         </View>
@@ -68,6 +78,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f2f3',
     borderRadius: 8,
     alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
   textContent: {
     flex: 1,
@@ -86,14 +103,16 @@ const styles = StyleSheet.create({
     marginTop: 14,
     flexDirection: 'row',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 8,
   },
   badge: {
     borderRadius: 3,
     paddingHorizontal: 10,
     paddingVertical: 4,
-    marginRight: 10,
     height: 45,
     width: 100,
+    justifyContent: 'center',
   },
   nutriBadge: {
     backgroundColor: '#1d9848',
