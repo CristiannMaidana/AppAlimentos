@@ -6,7 +6,6 @@ import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 
 import BrandCard from './components/brand-card';
 import CategoryCard from './components/category-card';
-import FloatingButton from './components/floating-button';
 import { CategoryItem } from './types/categoriaItem.home';
 
 // Create a list for categories
@@ -256,12 +255,6 @@ export default function HomeScreen() {
           )}
         />
       </ScrollView>
-
-      <FloatingButton
-        iconName="search"
-        backgroundColor="#13691e"
-        onPress={() => router.push('/(tabs)/search')}
-      />
     </View>
   );
 }
