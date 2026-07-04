@@ -12,61 +12,61 @@ import { CategoryItem } from './types/categoriaItem.home';
 const categories: CategoryItem[] = [
   {
     id: '1',
-    title: 'beverages',
+    title: 'Beverages',
     icon: <HugeiconsIcon icon={DrinkFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#2887c6',
   },
   {
     id: '2',
-    title: 'dairies',
+    title: 'Dairies',
     icon: <HugeiconsIcon icon={MilkBottleFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#fee08c',
   },
   {
     id: '3',
-    title: 'snacks',
+    title: 'Snacks',
     icon: <HugeiconsIcon icon={PopcornFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#e64172',
   },
   {
     id: '4',
-    title: 'breakfasts',
+    title: 'Breakfasts',
     icon: <HugeiconsIcon icon={Coffee02FreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#fa993f',
   },
   {
     id: '5',
-    title: 'desserts',
+    title: 'Desserts',
     icon: <HugeiconsIcon icon={Cupcake03Icon} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#775ee7',
   },
   {
     id: '6',
-    title: 'chocolates',
+    title: 'Chocolates',
     icon: <HugeiconsIcon icon={ChocolateFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#35322f',
   },
   {
     id: '7',
-    title: 'biscuits-and-cakes',
+    title: 'Biscuits-and-Cakes',
     icon: <HugeiconsIcon icon={CookieFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#a55a1e',
   },
   {
     id: '8',
-    title: 'cereals-and-potatoes',
+    title: 'Cereals-and-Potatoes',
     icon: <HugeiconsIcon icon={WheatFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#258789',
   },
   {
     id: '9',
-    title: 'meals',
+    title: 'Meals',
     icon: <HugeiconsIcon icon={Restaurant02FreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#d3372c',
   },
   {
     id: '10',
-    title: 'plant-based-foods',
+    title: 'Plant-based-foods',
     icon: <HugeiconsIcon icon={LeafFreeIcons} size={54} color="#fff" strokeWidth={1.8} />,
     backgroundColor: '#32ad5f',
   },
@@ -77,61 +77,61 @@ const brands = [
   {
     id: '1',
     title: 'NESTLE',
-    subTitle: 'nestle',
+    subTitle: 'Nestle',
     backgroundColor: '#d6f5d6',
   },
   {
     id: '2',
     title: 'COKE',
-    subTitle: 'coca-cola',
+    subTitle: 'Coca-Cola',
     backgroundColor: '#d6ecff',
   },
   {
     id: '3',
     title: 'PEPSI',
-    subTitle: 'pepsi',
+    subTitle: 'Pepsi',
     backgroundColor: '#ffe4cc',
   },
   {
     id: '4',
     title: 'DANONE',
-    subTitle: 'danone',
+    subTitle: 'Danone',
     backgroundColor: '#f4ddff',
   },
   {
     id: '5',
     title: 'KELLOGGS',
-    subTitle: 'kelloggs',
+    subTitle: 'Kelloggs',
     backgroundColor: '#d62828',
   },
   {
     id: '6',
     title: 'UNILEVER',
-    subTitle: 'unilever',
+    subTitle: 'Unilever',
     backgroundColor: '#4da3ff',
   },
   {
     id: '7',
     title: 'MONDELEZ',
-    subTitle: 'mondelez',
+    subTitle: 'Mondelez',
     backgroundColor: '#7b4dff',
   },
   {
     id: '8',
     title: 'MARS',
-    subTitle: 'mars',
+    subTitle: 'Mars',
     backgroundColor: '#ff6b57',
   },
   {
     id: '9',
     title: 'FERRERO',
-    subTitle: 'ferrero',
+    subTitle: 'Ferrero',
     backgroundColor: '#b7792b',
   },
   {
     id: '10',
     title: 'LACTAILS',
-    subTitle: 'lactails',
+    subTitle: 'Lactails',
     backgroundColor: '#8fd3ff',
   },
 ];
@@ -216,23 +216,23 @@ export default function HomeScreen() {
           <Pressable style={styles.button} onPress={() => goToSearch('Gluten-free', 'labels')}>
             <Text style={styles.textButton}>Gluten-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('no-added-sugar', 'labels')}>
-            <Text style={styles.textButton}>no-added-sugar</Text>
+          <Pressable style={styles.button} onPress={() => goToSearch('No-added-sugar', 'labels')}>
+            <Text style={styles.textButton}>No-added-sugar</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('fair-trade', 'labels')}>
-            <Text style={styles.textButton}>fair-trade</Text>
+          <Pressable style={styles.button} onPress={() => goToSearch('Fair-trade', 'labels')}>
+            <Text style={styles.textButton}>Fair-trade</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('lactose-free', 'labels')}>
-            <Text style={styles.textButton}>lactose-free</Text>
+          <Pressable style={styles.button} onPress={() => goToSearch('Lactose-free', 'labels')}>
+            <Text style={styles.textButton}>Lactose-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('palm-oil-free', 'labels')}>
-            <Text style={styles.textButton}>palm-oil-free</Text>
+          <Pressable style={styles.button} onPress={() => goToSearch('Palm-oil-free', 'labels')}>
+            <Text style={styles.textButton}>Palm-oil-free</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('high-fiber', 'labels')}>
-            <Text style={styles.textButton}>high-fiber</Text>
+          <Pressable style={styles.button} onPress={() => goToSearch('High-fiber', 'labels')}>
+            <Text style={styles.textButton}>High-fiber</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={() => goToSearch('low-fat', 'labels')}>
-            <Text style={styles.textButton}>low-fat</Text>
+          <Pressable style={styles.button} onPress={() => goToSearch('Low-fat', 'labels')}>
+            <Text style={styles.textButton}>Low-fat</Text>
           </Pressable>
         </View>
 
