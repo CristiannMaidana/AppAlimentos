@@ -41,7 +41,7 @@ export default function SearchScreen() {
             autoCorrect={false}
           />
         </View>
-        <Pressable style={styles.iconButton} onPress={() => console.log('Code button pressed')}>
+        <Pressable style={styles.iconButton} onPress={() => router.push('/camera')}>
           <MaterialCommunityIcons name="barcode" size={40} color="#111" />
         </Pressable>
       </View>
