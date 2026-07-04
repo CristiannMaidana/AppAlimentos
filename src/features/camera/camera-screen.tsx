@@ -30,7 +30,7 @@ export default function CameraScreen() {
   const { width, height } = useWindowDimensions();
 
   const scannerLeft = (width - SCANNER_FRAME_WIDTH) / 2;
-  const scannerTop = (height - SCANNER_FRAME_HEIGHT) / 2.35;
+  const scannerTop = (height - SCANNER_FRAME_HEIGHT) / 2.35 - 50;
   const scannerOverlayPath = [
     `M0 0 H${width} V${height} H0 Z`,
     createRoundedRectPath(
