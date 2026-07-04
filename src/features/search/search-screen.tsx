@@ -15,7 +15,8 @@ export default function SearchScreen() {
     (Array.isArray(params.brand) ? params.brand[0] : params.brand) ??
     (Array.isArray(params.label) ? params.label[0] : params.label) ??
     (Array.isArray(params.category) ? params.category[0] : params.category);
-  const { textInput, setTextInput, products, loading, error } = useSearchProducts(searchQuery);
+  const { textInput, setTextInput, products, loading, loadingMore, hasMore, loadMore, error } =
+    useSearchProducts(searchQuery);
 
   // Text dinamyc for the count of items
   const subtitle =
@@ -64,6 +65,17 @@ export default function SearchScreen() {
         keyExtractor={(item) => item.code}
         contentContainerStyle={styles.listContent}
         keyboardShouldPersistTaps="handled"
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.4}
+        ListFooterComponent={
+          loadingMore ? (
+            <View style={styles.footerLoader}>
+              <ActivityIndicator size="small" color="#1d9848" />
+            </View>
+          ) : hasMore ? (
+            <View style={styles.footerSpacer} />
+          ) : null
+        }
         ListEmptyComponent={
           !loading && textInput.trim().length > 0 && !error ? (
             <Text style={styles.emptyText}>No products found for this search.</Text>
@@ -167,5 +179,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#666',
     fontSize: 16,
+  },
+  footerLoader: {
+    paddingVertical: 16,
+    alignItems: 'center',
+  },
+  footerSpacer: {
+    height: 16,
   },
 });
