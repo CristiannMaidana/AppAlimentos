@@ -131,7 +131,10 @@ export default function CameraScreen() {
                 />
                 <Text>Ver producto</Text>
             </Pressable>
-            <Pressable style={styles.secondaryButton}>
+            <Pressable 
+            style={styles.secondaryButton}
+            onPress={() => handleBarCodeScanned('')}
+            >
               <HugeiconsIcon
                 icon={ReloadFreeIcons}
                 size={24}
