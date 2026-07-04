@@ -1,5 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const detailLabels = ['ENERGY', 'FAT', 'PROTEIN', 'CARBOHYDRATES'];
 
@@ -11,6 +10,7 @@ type DetailsProductProps = {
   notaNova: string;
   details: string[];
   isFavorite?: boolean;
+  image?: string;
   onToggleFavorite?: () => void;
 };
 
@@ -22,20 +22,11 @@ export default function DetailsProduct({
   notaNova,
   details,
   isFavorite = false,
+  image,
   onToggleFavorite,
 }: DetailsProductProps) {
   return (
     <View style={styles.wrapper}>
-      <Pressable
-        onPress={onToggleFavorite}
-        style={[styles.favoriteButton, isFavorite && styles.favoriteButtonActive]}
-        hitSlop={10}>
-        <Ionicons
-          name={isFavorite ? 'heart' : 'heart-outline'}
-          size={30}
-          color={isFavorite ? '#0a5918' : '#ffffff'}
-        />
-      </Pressable>
 
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
@@ -89,20 +80,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 1,
     borderColor: '#e0e0e0',
-  },
-  favoriteButton: {
-    position: 'absolute',
-    top: -48,
-    right: -2,
-    width: 70,
-    height: 70,
-    borderRadius: 46,
-    backgroundColor: 'rgba(255, 255, 255, 0.80)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  favoriteButtonActive: {
-    backgroundColor: 'rgba(255, 255, 255, 0.80)',
   },
   title: {
     fontSize: 15,
