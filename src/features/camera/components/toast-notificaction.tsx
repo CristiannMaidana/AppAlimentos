@@ -24,16 +24,16 @@ export default function ToastNotification({ message, showToast }: ToastNotificat
 
     if (showToast) {
       setIsVisible(true);
-      opacity.value = withTiming(1, { duration: 250 });
-      translateY.value = withTiming(0, { duration: 250 });
+      opacity.value = withTiming(1, { duration: 400 });
+      translateY.value = withTiming(0, { duration: 400 });
 
       hideTimer = setTimeout(() => {
-        opacity.value = withTiming(0, { duration: 250 });
-        translateY.value = withTiming(-20, { duration: 250 });
+        opacity.value = withTiming(0, { duration: 400 });
+        translateY.value = withTiming(-20, { duration: 400 });
 
         removeTimer = setTimeout(() => {
           setIsVisible(false);
-        }, 250);
+        }, 400);
       }, 3000);
     } else {
       setIsVisible(false);
