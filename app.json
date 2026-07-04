@@ -44,6 +44,7 @@
         "expo-camera",
         {
           "cameraPermission": "Allow FoodApp to access your camera",
+          "barcodeScannerPermission": "Allow FoodApp to scan barcodes",
           "barcodeScannerEnabled": true
         }
       ]
