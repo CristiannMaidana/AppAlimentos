@@ -1,4 +1,4 @@
-import { BarcodeScanFreeIcons, ScanIcon, ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons';
+import { BarcodeScanFreeIcons, ReloadFreeIcons, ScanIcon, ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
@@ -116,20 +116,31 @@ export default function CameraScreen() {
           </View>
         }
         activeChild={
-          <Pressable
-            style={styles.primaryButton}
-            onPress={() => router.replace({
-              pathname: '/products/[code]',
-              params: { code: scannedData! },
-            })}>
-            <HugeiconsIcon
-              icon={ShoppingBag01FreeIcons}
-              size={24}
-              color="black"
-              strokeWidth={1.8}
-            />
-            <Text>Ver producto</Text>
-          </Pressable>
+          <View style={styles.activeButtonsContainer}>
+             <Pressable
+              style={styles.primaryButton}
+              onPress={() => router.replace({
+                pathname: '/products/[code]',
+                params: { code: scannedData! },
+              })}>
+                <HugeiconsIcon
+                  icon={ShoppingBag01FreeIcons}
+                  size={24}
+                  color="black"
+                  strokeWidth={1.8}
+                />
+                <Text>Ver producto</Text>
+            </Pressable>
+            <Pressable style={styles.secondaryButton}>
+              <HugeiconsIcon
+                icon={ReloadFreeIcons}
+                size={24}
+                color="white"
+                strokeWidth={1.8}
+              />
+              <Text style={{color: 'white'}}>Escanear otro</Text>
+            </Pressable>
+          </View>
         }
       />
     </View>
@@ -192,13 +203,20 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     padding: 16,
-    position: 'absolute',
     gap: 20,
-    bottom: 60,
-    left: 80,
-    right: 80,
     flexDirection: 'row',
     backgroundColor: 'green',
+    borderRadius: 36,
+    height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 2,
+  },
+  secondaryButton: {
+    padding: 16,
+    gap: 20,
+    flexDirection: 'row',
+    backgroundColor: '#1C1C1E',
     borderRadius: 36,
     height: 70,
     alignItems: 'center',
@@ -228,6 +246,14 @@ const styles = StyleSheet.create({
     right: 40,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderRadius: 18,
+    zIndex: 2,
+  },
+  activeButtonsContainer: {
+    position: 'absolute',
+    bottom: 60,
+    left: 80,
+    right: 80,
+    gap: 12,
     zIndex: 2,
   },
   buttonInfoContainer:{
