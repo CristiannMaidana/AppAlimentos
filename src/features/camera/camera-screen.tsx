@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function CameraScreen() {
-  const [facing, setFacing] = useState<CameraType>('back');
+  const [facing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
 
   if (!permission) {
@@ -55,9 +55,5 @@ const styles = StyleSheet.create({
     height: 70,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  button: {
-    flex: 1,
-    alignItems: 'center',
   },
 });
