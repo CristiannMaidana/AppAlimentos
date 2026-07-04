@@ -1,4 +1,4 @@
-import { BarcodeScanFreeIcons, ScanIcon, ShoppingBag01FreeIcons, Tick02FreeIcons } from '@hugeicons/core-free-icons';
+import { BarcodeScanFreeIcons, ScanIcon, ShoppingBag01FreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
@@ -6,6 +6,7 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Button, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import ToastNotification from './components/toast-notificaction';
 
 const SCANNER_FRAME_WIDTH = 280;
 const SCANNER_FRAME_HEIGHT = 220;
@@ -92,10 +93,7 @@ export default function CameraScreen() {
         <Text style={styles.textStyle}>Alinea el código de barras dentro del marco</Text>
       </View>
       {scannedData && (
-        <View style={styles.successfullyScanned}>
-          <HugeiconsIcon icon={Tick02FreeIcons} size={24} color="#FFFFFF" strokeWidth={1.8} />
-          <Text style={styles.textStyle}>Código detectado</Text>
-        </View>
+        <ToastNotification message="Código detectado" showToast={true} />
       )}
       <View style={styles.instructionContainer}>
         <HugeiconsIcon icon={ScanIcon} size={24} color="#125618" strokeWidth={1.8} />
@@ -216,21 +214,6 @@ const styles = StyleSheet.create({
     right: 40,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderRadius: 18,
-    zIndex: 2,
-  },
-  successfullyScanned: {
-    paddingHorizontal: 35,
-    paddingVertical: 10,
-    position: 'absolute',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-    bottom: 610,
-    left: 125,
-    right: 125,
-    backgroundColor: 'green',
-    borderRadius: 22,
     zIndex: 2,
   },
   buttonInfoContainer:{
