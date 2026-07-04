@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { KitchenUtensilsIcon } from '@hugeicons/core-free-icons';
+import { Alert01FreeIcons, KitchenUtensilsIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import DetailsProduct from './components/details-product';
 import ValuesNutritional from './components/values-nutritional';
@@ -56,7 +56,12 @@ export default function FavoritesScreen() {
             ? 'Loading product...'
             : error
               ? error
-              : product?.ingredientsText || 'Select a product from search.'}
+              : product?.ingredientsText ||
+              <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
+                <HugeiconsIcon icon={Alert01FreeIcons} size={24} color="black" strokeWidth={1} />
+                <Text>Sin informacion</Text>
+              </View>
+          }
         </Text>
       </View>
 
