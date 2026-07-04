@@ -1,6 +1,6 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import ProductSheet from './components/product-sheet';
 import { useSearchProducts } from './hooks/useSearchProducts';
@@ -41,6 +41,9 @@ export default function SearchScreen() {
             autoCorrect={false}
           />
         </View>
+        <Pressable style={styles.iconButton} onPress={() => console.log('Code button pressed')}>
+          <MaterialCommunityIcons name="barcode" size={40} color="#111" />
+        </Pressable>
       </View>
 
       {loading ? (
@@ -89,6 +92,16 @@ export default function SearchScreen() {
 }
 
 const styles = StyleSheet.create({
+  iconButton: {
+    width: 55,
+    height: 55,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F2F2F2',
+    borderWidth: 0.3,
+    borderColor: '#111',
+  },
   container: {
     backgroundColor: '#f7f8f9',
     flex: 1,
@@ -105,6 +118,9 @@ const styles = StyleSheet.create({
   },
   searchBarWrapper: {
     marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
   productSheetContainer: {
     justifyContent: 'center',
@@ -121,6 +137,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   serchBar: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f1f2f3',
