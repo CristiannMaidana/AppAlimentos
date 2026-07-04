@@ -2,8 +2,9 @@ import { BarcodeScanFreeIcons, ScanIcon, ShoppingBag01FreeIcons, Tick02FreeIcons
 import { HugeiconsIcon } from '@hugeicons/react-native';
 
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
+import { router } from 'expo-router';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Button, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 const SCANNER_FRAME_WIDTH = 280;
@@ -111,10 +112,15 @@ export default function CameraScreen() {
         </View>
         <Text style={styles.textStyle}>Escaneá un producto para ver detalle</Text>
       </View>
-      <View style={styles.buttonContainer}>
+      <Pressable 
+      style={styles.buttonContainer} 
+      onPress={() => router.replace({
+        pathname: '/products/[code]',
+        params: { code: 100000 },
+      })}>
         <HugeiconsIcon icon={ShoppingBag01FreeIcons} size={24} color="black" strokeWidth={1.8} />
         <Text>Ver producto</Text>
-      </View>
+      </Pressable>
     </View>
   );
 }
