@@ -1,6 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { KitchenUtensilsIcon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react-native';
 import DetailsProduct from './components/details-product';
 import ValuesNutritional from './components/values-nutritional';
 import { useProducts } from './hooks/useProducts';
@@ -45,7 +47,10 @@ export default function FavoritesScreen() {
         </View>
       </View>
       <View style={styles.containerIngredients}>
-        <Text>Ingredients</Text>
+        <View style={styles.rowIngredients}>
+          <HugeiconsIcon icon={KitchenUtensilsIcon} size={24} color="#125618" strokeWidth={1.8} />
+          <Text style={styles.textIngredients}>Ingredients</Text>
+        </View>
         <Text>
           {loading
             ? 'Loading product...'
@@ -102,28 +107,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#f3f4f5',
     borderRadius: 30,
     margin: 20,
-    alignItems: 'center',
     padding: 30,
-    gap: 10,
+    gap: 20,
   },
-  containerAllergen: {
-    backgroundColor: '#f4ecec',
-    padding: 20,
-    borderRadius: 10,
-    margin: 20,
-    alignItems: 'stretch',
-    gap: 5,
+  rowIngredients: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 10,
+    alignItems: 'flex-end',
   },
-  allergenTextGroup: {
-    gap: 5,
-    paddingLeft: 10,
-  },
-  allergenTitle: {
-    color: '#aa201e',
-  },
-  allergenText: {
-    color: '#8a3633',
+  textIngredients: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
