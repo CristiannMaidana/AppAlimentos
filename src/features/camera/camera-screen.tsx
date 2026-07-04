@@ -43,6 +43,10 @@ export default function CameraScreen() {
           barcodeTypes: ['ean13', 'ean8', 'upc_e', 'upc_a', 'code128', 'code39'],
         }} 
       />
+      <View style={styles.topContainer}>
+        <Text style={styles.textStyle}>Escanear producto</Text>
+        <Text style={styles.textStyle}>Alinea el código de barras dentro del marco</Text>
+      </View>
       <View style={styles.buttonContainer}>
         <Text>Escanee un producto para ver detalles.</Text>
       </View>
@@ -75,4 +79,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  topContainer: {
+    padding: 16,
+    position: 'absolute',
+    top: 0,
+    left: 30,
+    right: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    fontSize: 16,
+    color: 'white',
+  }
 });
