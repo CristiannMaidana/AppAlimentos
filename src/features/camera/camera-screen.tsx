@@ -1,3 +1,6 @@
+import { ScanIcon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react-native';
+
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
@@ -30,7 +33,7 @@ export default function CameraScreen() {
   const { width, height } = useWindowDimensions();
 
   const scannerLeft = (width - SCANNER_FRAME_WIDTH) / 2;
-  const scannerTop = (height - SCANNER_FRAME_HEIGHT) / 2.35 - 50;
+  const scannerTop = (height - SCANNER_FRAME_HEIGHT) / 2.35 - 70;
   const scannerOverlayPath = [
     `M0 0 H${width} V${height} H0 Z`,
     createRoundedRectPath(
@@ -91,6 +94,10 @@ export default function CameraScreen() {
       <View style={styles.topContainer}>
         <Text style={styles.textStyle}>Escanear producto</Text>
         <Text style={styles.textStyle}>Alinea el código de barras dentro del marco</Text>
+      </View>
+      <View style={styles.instructionContainer}>
+        <HugeiconsIcon icon={ScanIcon} size={24} color="#125618" strokeWidth={1.8} />
+        <Text style={styles.textStyle}>Asegúrate de que el código de barras esté bien iluminado y no esté borroso.</Text>
       </View>
       <View style={styles.buttonContainer}>
         <Text>Escanee un producto para ver detalles.</Text>
@@ -177,8 +184,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 2,
   },
+  instructionContainer: {
+    paddingHorizontal: 35,
+    paddingVertical: 10,
+    position: 'absolute',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    bottom: 270,
+    left: 40,
+    right: 40,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: 18,
+    zIndex: 2,
+  },
   textStyle: {
-    fontSize: 16,
+    fontSize: 14,
     color: 'white',
   }
 });
