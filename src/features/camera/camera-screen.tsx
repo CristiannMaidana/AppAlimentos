@@ -90,7 +90,7 @@ export default function CameraScreen() {
         </View>
       </View>
       <View style={styles.topContainer}>
-        <Text style={styles.textStyle}>Escanear producto</Text>
+        <Text style={[styles.textStyle, styles.title]}>Escanear producto</Text>
         <Text style={styles.textStyle}>Alinea el código de barras dentro del marco</Text>
       </View>
       {scannedData && (
@@ -252,5 +252,10 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 14,
     color: 'white',
-  }
+  },
+  title:{
+    fontWeight: 'bold',
+    fontSize: 20,
+    paddingBottom: 5,
+  },
 });
