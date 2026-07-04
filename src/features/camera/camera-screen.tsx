@@ -5,6 +5,8 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 export default function CameraScreen() {
   const [facing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
+  // State to track if a barcode has been scanned
+  const [scanned, setScanned] = useState(false);
 
   if (!permission) {
     // Camera permissions are still loading.
@@ -16,14 +18,31 @@ export default function CameraScreen() {
     return (
       <View style={styles.container}>
         <Text style={styles.message}>We need your permission to show the camera</Text>
-        <Button onPress={requestPermission} title="grant permission" />
+        <Button onPress={requestPermission} title="Dar permiso" />
       </View>
     );
   }
 
+  const handleBarCodeScanned = ({ type, data }: { type: string; data: string }) => {
+    // Set scanned to true to prevent multiple scans
+    setScanned(true);
+    // You can handle the scanned barcode data here, e.g., navigate to a product details screen
+    // TODO: with the data use for search the product in api.
+    console.log(`Bar code with type ${type} and data ${data} has been scanned!`);
+  }
+
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} facing={facing} />
+      <CameraView 
+        style={styles.camera} 
+        facing={facing} 
+        onBarcodeScanned={
+          scanned ? undefined : handleBarCodeScanned
+        } 
+        barcodeScannerSettings={{
+          barcodeTypes: ['ean13', 'ean8', 'upc_e', 'upc_a', 'code128', 'code39'],
+        }} 
+      />
       <View style={styles.buttonContainer}>
         <Text>Escanee un producto para ver detalles.</Text>
       </View>
