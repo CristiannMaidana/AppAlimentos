@@ -3,9 +3,9 @@ import { HugeiconsIcon } from '@hugeicons/react-native';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import Animated, {
-    useAnimatedStyle,
-    useSharedValue,
-    withTiming,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
 } from 'react-native-reanimated';
 
 type ToastNotificationProps = {
@@ -24,16 +24,16 @@ export default function ToastNotification({ message, showToast }: ToastNotificat
 
     if (showToast) {
       setIsVisible(true);
-      opacity.value = withTiming(1, { duration: 400 });
-      translateY.value = withTiming(0, { duration: 400 });
+      opacity.value = withTiming(1, { duration: 300 });
+      translateY.value = withTiming(0, { duration: 300 });
 
       hideTimer = setTimeout(() => {
-        opacity.value = withTiming(0, { duration: 400 });
-        translateY.value = withTiming(-20, { duration: 400 });
+        opacity.value = withTiming(0, { duration: 300 });
+        translateY.value = withTiming(-20, { duration: 300 });
 
         removeTimer = setTimeout(() => {
           setIsVisible(false);
-        }, 400);
+        }, 300);
       }, 3000);
     } else {
       setIsVisible(false);
