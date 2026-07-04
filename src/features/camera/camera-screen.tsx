@@ -6,6 +6,7 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Button, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import AnimatedSwap from './components/animated-swap';
 import ToastNotification from './components/toast-notificaction';
 
 const SCANNER_FRAME_WIDTH = 280;
@@ -99,25 +100,38 @@ export default function CameraScreen() {
         <HugeiconsIcon icon={ScanIcon} size={24} color="#125618" strokeWidth={1.8} />
         <Text style={styles.textStyle}>Asegúrate de que el código de barras esté bien iluminado y no esté borroso.</Text>
       </View>
-      {!scannedData && (
-        <View style={styles.buttonInfoContainer}>
-          <View style={styles.iconContainer}>
-            <HugeiconsIcon icon={BarcodeScanFreeIcons} size={40} color="green" strokeWidth={1.8} />
+      <AnimatedSwap
+        active={!!scannedData}
+        inactiveChild={
+          <View style={styles.buttonInfoContainer}>
+            <View style={styles.iconContainer}>
+              <HugeiconsIcon
+                icon={BarcodeScanFreeIcons}
+                size={40}
+                color="green"
+                strokeWidth={1.8}
+              />
+            </View>
+            <Text style={styles.textStyle}>Escaneá un producto para ver detalle.</Text>
           </View>
-          <Text style={styles.textStyle}>Escaneá un producto para ver detalle.</Text>
-        </View>
-      )}
-      {scannedData && (
-        <Pressable
-          style={styles.buttonContainer}
-          onPress={() => router.replace({
-            pathname: '/products/[code]',
-            params: { code: scannedData },
-          })}>
-          <HugeiconsIcon icon={ShoppingBag01FreeIcons} size={24} color="black" strokeWidth={1.8} />
-          <Text>Ver producto</Text>
-        </Pressable>
-      )}
+        }
+        activeChild={
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => router.replace({
+              pathname: '/products/[code]',
+              params: { code: scannedData! },
+            })}>
+            <HugeiconsIcon
+              icon={ShoppingBag01FreeIcons}
+              size={24}
+              color="black"
+              strokeWidth={1.8}
+            />
+            <Text>Ver producto</Text>
+          </Pressable>
+        }
+      />
     </View>
   );
 }
