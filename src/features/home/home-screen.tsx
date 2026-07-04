@@ -144,7 +144,7 @@ export default function HomeScreen() {
   function goToSearch(query: string, searchType: 'brands' | 'labels' | 'categories') {
     if (searchType === 'brands') {
       router.push({
-        pathname: '/(tabs)/search/brands/[brand]',
+        pathname: '/search/brands/[brand]',
         params: {
           brand: query,
         },
@@ -154,7 +154,7 @@ export default function HomeScreen() {
 
     if (searchType === 'labels') {
       router.push({
-        pathname: '/(tabs)/search/labels/[label]',
+        pathname: '/search/labels/[label]',
         params: {
           label: query,
         },
@@ -163,7 +163,7 @@ export default function HomeScreen() {
     }
 
     router.push({
-      pathname: '/(tabs)/search/categories/[category]',
+      pathname: '/search/categories/[category]',
       params: {
         category: query,
       },
