@@ -117,7 +117,7 @@ export default function CameraScreen() {
         }
         activeChild={
           <Pressable
-            style={styles.buttonContainer}
+            style={styles.primaryButton}
             onPress={() => router.replace({
               pathname: '/products/[code]',
               params: { code: scannedData! },
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 4,
     borderBottomRightRadius: 12,
   },
-  buttonContainer: {
+  primaryButton: {
     padding: 16,
     position: 'absolute',
     gap: 20,
