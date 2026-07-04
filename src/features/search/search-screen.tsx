@@ -24,9 +24,12 @@ export default function SearchScreen() {
       ? 'Write to search products or brands'
       : `${products.length} item${products.length === 1 ? '' : 's'} found`;
 
+  // Dynamic title based on the search type (brand, label, category)
+  const title = params.brand ? params.brand : params.label ? params.label : params.category ? params.category : 'Search';
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Beverages</Text>
+      <Text style={styles.title}>{title}</Text>
       <Text style={styles.subtitle}>{subtitle}</Text>
 
       <View style={styles.searchBarWrapper}>
