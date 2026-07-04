@@ -1,4 +1,4 @@
-import { ScanIcon, Tick02FreeIcons } from '@hugeicons/core-free-icons';
+import { ScanIcon, ShoppingBag01FreeIcons, Tick02FreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
@@ -104,8 +104,10 @@ export default function CameraScreen() {
         <HugeiconsIcon icon={ScanIcon} size={24} color="#125618" strokeWidth={1.8} />
         <Text style={styles.textStyle}>Asegúrate de que el código de barras esté bien iluminado y no esté borroso.</Text>
       </View>
+      {/* TODO: hide button and show only when the data is detected */}
       <View style={styles.buttonContainer}>
-        <Text>Escanee un producto para ver detalles.</Text>
+        <HugeiconsIcon icon={ShoppingBag01FreeIcons} size={24} color="black" strokeWidth={1.8} />
+        <Text>Ver producto</Text>
       </View>
     </View>
   );
@@ -168,12 +170,13 @@ const styles = StyleSheet.create({
   buttonContainer: {
     padding: 16,
     position: 'absolute',
-    bottom: 64,
-    left: 30,
-    right: 30,
+    gap: 20,
+    bottom: 60,
+    left: 80,
+    right: 80,
     flexDirection: 'row',
-    backgroundColor: 'white',
-    borderRadius: 24,
+    backgroundColor: 'green',
+    borderRadius: 36,
     height: 70,
     alignItems: 'center',
     justifyContent: 'center',
