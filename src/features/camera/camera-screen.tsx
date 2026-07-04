@@ -1,4 +1,4 @@
-import { ScanIcon, ShoppingBag01FreeIcons, Tick02FreeIcons } from '@hugeicons/core-free-icons';
+import { BarcodeScanFreeIcons, ScanIcon, ShoppingBag01FreeIcons, Tick02FreeIcons } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
@@ -104,7 +104,13 @@ export default function CameraScreen() {
         <HugeiconsIcon icon={ScanIcon} size={24} color="#125618" strokeWidth={1.8} />
         <Text style={styles.textStyle}>Asegúrate de que el código de barras esté bien iluminado y no esté borroso.</Text>
       </View>
-      {/* TODO: hide button and show only when the data is detected */}
+      {/* TODO: hide button and show only when the data is detected and change between info and button */}
+      <View style={styles.buttonInfoContainer}>
+        <View style={styles.iconContainer}>
+          <HugeiconsIcon icon={BarcodeScanFreeIcons} size={40} color="green" strokeWidth={1.8} />
+        </View>
+        <Text style={styles.textStyle}>Escaneá un producto para ver detalle</Text>
+      </View>
       <View style={styles.buttonContainer}>
         <HugeiconsIcon icon={ShoppingBag01FreeIcons} size={24} color="black" strokeWidth={1.8} />
         <Text>Ver producto</Text>
@@ -221,6 +227,25 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
     borderRadius: 22,
     zIndex: 2,
+  },
+  buttonInfoContainer:{
+    paddingHorizontal: 15,
+    position: 'absolute',
+    gap: 10,
+    bottom: 60,
+    left: 135,
+    right: 135,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 2,
+  },
+  iconContainer: {
+    width: 75,
+    height: 75,
+    borderRadius: 999,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textStyle: {
     fontSize: 14,
