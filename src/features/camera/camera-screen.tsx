@@ -1,12 +1,46 @@
 import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+
+const SCANNER_FRAME_WIDTH = 280;
+const SCANNER_FRAME_HEIGHT = 220;
+const SCANNER_CORNER_RADIUS = 12;
+
+function createRoundedRectPath(x: number, y: number, width: number, height: number, radius: number) {
+  return [
+    `M${x + radius} ${y}`,
+    `H${x + width - radius}`,
+    `A${radius} ${radius} 0 0 1 ${x + width} ${y + radius}`,
+    `V${y + height - radius}`,
+    `A${radius} ${radius} 0 0 1 ${x + width - radius} ${y + height}`,
+    `H${x + radius}`,
+    `A${radius} ${radius} 0 0 1 ${x} ${y + height - radius}`,
+    `V${y + radius}`,
+    `A${radius} ${radius} 0 0 1 ${x + radius} ${y}`,
+    'Z',
+  ].join(' ');
+}
 
 export default function CameraScreen() {
   const [facing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
   // State to track if a barcode has been scanned
   const [scanned, setScanned] = useState(false);
+  const { width, height } = useWindowDimensions();
+
+  const scannerLeft = (width - SCANNER_FRAME_WIDTH) / 2;
+  const scannerTop = (height - SCANNER_FRAME_HEIGHT) / 2.35;
+  const scannerOverlayPath = [
+    `M0 0 H${width} V${height} H0 Z`,
+    createRoundedRectPath(
+      scannerLeft,
+      scannerTop,
+      SCANNER_FRAME_WIDTH,
+      SCANNER_FRAME_HEIGHT,
+      SCANNER_CORNER_RADIUS
+    ),
+  ].join(' ');
 
   if (!permission) {
     // Camera permissions are still loading.
@@ -43,6 +77,17 @@ export default function CameraScreen() {
           barcodeTypes: ['ean13', 'ean8', 'upc_e', 'upc_a', 'code128', 'code39'],
         }} 
       />
+      <View pointerEvents="none" style={styles.scannerOverlay}>
+        <Svg width="100%" height="100%" style={StyleSheet.absoluteFillObject}>
+          <Path d={scannerOverlayPath} fill="rgba(0, 0, 0, 0.55)" fillRule="evenodd" />
+        </Svg>
+        <View style={[styles.scannerFrame, { left: scannerLeft, top: scannerTop }]}>
+          <View style={[styles.corner, styles.cornerTopLeft]} />
+          <View style={[styles.corner, styles.cornerTopRight]} />
+          <View style={[styles.corner, styles.cornerBottomLeft]} />
+          <View style={[styles.corner, styles.cornerBottomRight]} />
+        </View>
+      </View>
       <View style={styles.topContainer}>
         <Text style={styles.textStyle}>Escanear producto</Text>
         <Text style={styles.textStyle}>Alinea el código de barras dentro del marco</Text>
@@ -66,6 +111,48 @@ const styles = StyleSheet.create({
   camera: {
     flex: 1,
   },
+  scannerOverlay: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  scannerFrame: {
+    width: SCANNER_FRAME_WIDTH,
+    height: SCANNER_FRAME_HEIGHT,
+    position: 'absolute',
+  },
+  corner: {
+    position: 'absolute',
+    width: 36,
+    height: 36,
+    borderColor: '#FFFFFF',
+  },
+  cornerTopLeft: {
+    top: 0,
+    left: 0,
+    borderTopWidth: 4,
+    borderLeftWidth: 4,
+    borderTopLeftRadius: 12,
+  },
+  cornerTopRight: {
+    top: 0,
+    right: 0,
+    borderTopWidth: 4,
+    borderRightWidth: 4,
+    borderTopRightRadius: 12,
+  },
+  cornerBottomLeft: {
+    bottom: 0,
+    left: 0,
+    borderBottomWidth: 4,
+    borderLeftWidth: 4,
+    borderBottomLeftRadius: 12,
+  },
+  cornerBottomRight: {
+    right: 0,
+    bottom: 0,
+    borderBottomWidth: 4,
+    borderRightWidth: 4,
+    borderBottomRightRadius: 12,
+  },
   buttonContainer: {
     padding: 16,
     position: 'absolute',
@@ -78,6 +165,7 @@ const styles = StyleSheet.create({
     height: 70,
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 2,
   },
   topContainer: {
     padding: 16,
@@ -87,6 +175,7 @@ const styles = StyleSheet.create({
     right: 30,
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 2,
   },
   textStyle: {
     fontSize: 16,
