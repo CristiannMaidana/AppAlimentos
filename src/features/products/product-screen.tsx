@@ -29,6 +29,7 @@ export default function FavoritesScreen() {
             noteNutritional={product?.nutriscoreGrade ?? ''}
             noteEcoScore={product?.ecoscoreGrade ?? ''}
             notaNova={product?.novaGroup ?? ''}
+            image=''
             details={[
               formatValue(product?.nutriments?.energyKj, product?.nutriments?.energyKjUnit),
               formatValue(product?.nutriments?.fat, product?.nutriments?.fatUnit),
