@@ -29,8 +29,7 @@ function createRoundedRectPath(x: number, y: number, width: number, height: numb
 export default function CameraScreen() {
   const [facing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
-  // State to track if a barcode has been scanned
-  const [scanned, setScanned] = useState(false);
+  const [scannedData, setScannedData] = useState<string | null>(null);
   const { width, height } = useWindowDimensions();
 
   const scannerLeft = (width - SCANNER_FRAME_WIDTH) / 2;
@@ -61,13 +60,9 @@ export default function CameraScreen() {
     );
   }
 
-  const handleBarCodeScanned = ({ type, data }: { type: string; data: string }) => {
-    // Set scanned to true to prevent multiple scans
-    setScanned(true);
-    // You can handle the scanned barcode data here, e.g., navigate to a product details screen
-    // TODO: with the data use for search the product in api.
-    console.log(`Bar code with type ${type} and data ${data} has been scanned!`);
-  }
+  const handleBarCodeScanned = (data: string) => {
+    setScannedData(data);
+  };
 
   return (
     <View style={styles.container}>
@@ -75,7 +70,7 @@ export default function CameraScreen() {
         style={styles.camera} 
         facing={facing} 
         onBarcodeScanned={
-          scanned ? undefined : handleBarCodeScanned
+          scannedData ? undefined : ({ data }) => handleBarCodeScanned(data)
         } 
         barcodeScannerSettings={{
           barcodeTypes: ['ean13', 'ean8', 'upc_e', 'upc_a', 'code128', 'code39'],
@@ -96,31 +91,35 @@ export default function CameraScreen() {
         <Text style={styles.textStyle}>Escanear producto</Text>
         <Text style={styles.textStyle}>Alinea el código de barras dentro del marco</Text>
       </View>
-      {/*TODO: hide message and show only when the data is detected*/}
-      <View style={styles.successfullyScanned}>
-        <HugeiconsIcon icon={Tick02FreeIcons} size={24} color="#FFFFFF" strokeWidth={1.8} />
-        <Text style={styles.textStyle}>Código detectado</Text>
-      </View>
+      {scannedData && (
+        <View style={styles.successfullyScanned}>
+          <HugeiconsIcon icon={Tick02FreeIcons} size={24} color="#FFFFFF" strokeWidth={1.8} />
+          <Text style={styles.textStyle}>Código detectado</Text>
+        </View>
+      )}
       <View style={styles.instructionContainer}>
         <HugeiconsIcon icon={ScanIcon} size={24} color="#125618" strokeWidth={1.8} />
         <Text style={styles.textStyle}>Asegúrate de que el código de barras esté bien iluminado y no esté borroso.</Text>
       </View>
-      {/* TODO: hide button and show only when the data is detected and change between info and button */}
-      <View style={styles.buttonInfoContainer}>
-        <View style={styles.iconContainer}>
-          <HugeiconsIcon icon={BarcodeScanFreeIcons} size={40} color="green" strokeWidth={1.8} />
+      {!scannedData && (
+        <View style={styles.buttonInfoContainer}>
+          <View style={styles.iconContainer}>
+            <HugeiconsIcon icon={BarcodeScanFreeIcons} size={40} color="green" strokeWidth={1.8} />
+          </View>
+          <Text style={styles.textStyle}>Escaneá un producto para ver detalle.</Text>
         </View>
-        <Text style={styles.textStyle}>Escaneá un producto para ver detalle</Text>
-      </View>
-      <Pressable 
-      style={styles.buttonContainer} 
-      onPress={() => router.replace({
-        pathname: '/products/[code]',
-        params: { code: 100000 },
-      })}>
-        <HugeiconsIcon icon={ShoppingBag01FreeIcons} size={24} color="black" strokeWidth={1.8} />
-        <Text>Ver producto</Text>
-      </Pressable>
+      )}
+      {scannedData && (
+        <Pressable
+          style={styles.buttonContainer}
+          onPress={() => router.replace({
+            pathname: '/products/[code]',
+            params: { code: scannedData },
+          })}>
+          <HugeiconsIcon icon={ShoppingBag01FreeIcons} size={24} color="black" strokeWidth={1.8} />
+          <Text>Ver producto</Text>
+        </Pressable>
+      )}
     </View>
   );
 }
