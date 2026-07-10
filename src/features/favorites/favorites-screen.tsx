@@ -6,6 +6,7 @@ export default function FavoritesScreen () {
             <Text style={styles.title}>Favorites</Text>
             {/* TODO: cambiar a texto dinamico en base a lo que tenga el usuario */}
             <Text style={styles.subtitle}>2 items favoritos</Text>
+            <Text style={styles.subtitle}>Productos:</Text>
         </View>
     );
 }
@@ -26,5 +27,6 @@ const styles = StyleSheet.create({
     subtitle: {
         fontSize: 20,
         color: '#666',
+        marginBottom: 20,
     },
 });
