@@ -91,6 +91,28 @@ export default function TabLayout() {
             ),
         }}
       />
+      <Tabs.Screen
+        name="favorites"
+        options={{
+          title: 'Favorites',
+          tabBarLabel: ({ focused }) =>
+            focused ? null : <Text style={{ fontSize: 12, color: '#000000' }}>Favorites</Text>,
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <LinearGradient
+                colors={['#36703f', '#46944e']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={activeTabIconContainer}>
+                <IconSymbol size={28} name="heart.fill" color="#ffffff" />
+              </LinearGradient>
+            ) : (
+              <View style={activeTabIconContainer}>
+                <IconSymbol size={28} name="heart.fill" color={color} />
+              </View>
+            ),
+        }}
+      />
     </Tabs>
   );
 }
