@@ -11,5 +11,9 @@ export default function FavoritesScreen () {
 const styles = StyleSheet.create({
     screenBackgroundFavorites : {
         flex: 1,
+        flexDirection: 'column',
+        backgroundColor: '#f7f8f9',
+        alignItems: 'stretch',
+        padding: 20,
     }
 });
