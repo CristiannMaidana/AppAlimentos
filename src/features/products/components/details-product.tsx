@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import ButtonAddFavorites from './button-add-favorites';
 
 const detailLabels = ['ENERGY', 'FAT', 'PROTEIN', 'CARBOHYDRATES'];
 
@@ -9,8 +10,8 @@ type DetailsProductProps = {
   noteEcoScore: string;
   notaNova: string;
   details: string[];
-  isFavorite?: boolean;
   image?: string;
+  isFavorite?: boolean;
   onToggleFavorite?: () => void;
 };
 
@@ -21,12 +22,18 @@ export default function DetailsProduct({
   noteEcoScore,
   notaNova,
   details,
-  isFavorite = false,
   image,
+  isFavorite,
   onToggleFavorite,
 }: DetailsProductProps) {
   return (
     <View style={styles.wrapper}>
+      <View style={styles.favoriteButton}>
+        <ButtonAddFavorites
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
+      </View>
 
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
@@ -80,6 +87,12 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 1,
     borderColor: '#e0e0e0',
+  },
+  favoriteButton: {
+    position: 'absolute',
+    right: 0,
+    top: -43,
+    zIndex: 0,
   },
   title: {
     fontSize: 15,
