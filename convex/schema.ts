@@ -3,11 +3,11 @@ import { v } from "convex/values";
 
 export default defineSchema ({
     favorites: defineTable({
-        code: v.number(),
+        code: v.string(),
         brands: v.string(),
         ecoscoreGrade: v.string(),
         imageUrl: v.optional(v.string()),
-        nutriscroeGrade: v.string(),
+        nutriscoreGrade: v.string(),
         productName: v.string(),
     })
     .index("by_code", ["code"]),
