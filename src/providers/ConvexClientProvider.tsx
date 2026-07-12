@@ -9,7 +9,7 @@ if (!convexUrl) {
   );
 }
 
-const convexClient = new ConvexReactClient(convexUrl);
+export const convexClient = new ConvexReactClient(convexUrl);
 
 export function ConvexClientProvider({
   children,
