@@ -1,5 +1,12 @@
 import { v } from 'convex/values';
-import { mutation } from './_generated/server';
+import { mutation, query } from './_generated/server';
+
+export const listFavorites = query({
+    args: {},
+    handler: async (ctx) => {
+        return await ctx.db.query("favorites").order("desc").collect();
+    },
+})
 
 export const addFavorite = mutation ({
     args: {
