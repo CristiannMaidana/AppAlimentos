@@ -1,12 +1,36 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useRouter } from 'expo-router';
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import ProductSheet from '../search/components/product-sheet';
+import { useFavorites } from './hooks/useFavorites';
 
 export default function FavoritesScreen () {
+    const router = useRouter();
+    const { favorites, loading } = useFavorites();
+
     return (
         <View style={styles.screenBackgroundFavorites}>
             <Text style={styles.title}>Favorites</Text>
-            {/* TODO: cambiar a texto dinamico en base a lo que tenga el usuario */}
-            <Text style={styles.subtitle}>2 items favoritos</Text>
-            <Text style={styles.subtitle}>Productos:</Text>
+            <Text style={styles.subtitle}>{favorites.length} items favorites</Text>
+            <FlatList
+                data={favorites}
+                keyExtractor={(item) => item._id}
+                ListEmptyComponent={!loading ? <Text>No hay productos favoritos.</Text> : null}
+                renderItem={({ item }) => (
+                    <ProductSheet
+                        title={item.productName}
+                        description={item.brands}
+                        image={item.imageUrl}
+                        noteNutritional={item.nutriscoreGrade}
+                        noteEcoScore={item.ecoscoreGrade}
+                        onPressed={() =>
+                            router.push({
+                                pathname: '/products/[code]',
+                                params: { code: item.code },
+                            })
+                        }
+                    />
+                )}
+            />
         </View>
     );
 }
@@ -17,7 +41,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: '#f7f8f9',
         alignItems: 'stretch',
-        padding: 20,
+        paddingTop: 20,
+        paddingHorizontal: 20,
     },
     title : {
         fontSize: 37,
