@@ -1,17 +1,19 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { ConvexBetterAuthProvider } from '@convex-dev/better-auth/react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { ConvexClientProvider } from '@/providers/ConvexClientProvider';
+import { authClient } from '@/lib/auth/auth-client';
+import { convexClient } from '@/providers/ConvexClientProvider';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <ConvexClientProvider>
+      <ConvexBetterAuthProvider client={convexClient} authClient={authClient}>
         <Stack screenOptions={{
           headerBackButtonDisplayMode: 'minimal',
           headerTitle: '',
@@ -19,7 +21,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         </Stack>
-      </ConvexClientProvider>
+      </ConvexBetterAuthProvider>
       <StatusBar style="auto" />
     </ThemeProvider>
   );
