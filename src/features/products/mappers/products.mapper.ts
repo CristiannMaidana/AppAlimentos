@@ -6,6 +6,7 @@ export function mapProduct(raw: any): Product {
     code: raw.code,
     brands: raw.brands,
     productName: raw.product_name,
+    imageUrl: raw.image_url,
     ecoscoreGrade: raw.ecoscore_grade,
     ingredientsText: raw.ingredients_text,
     novaGroup: raw.nova_group,
