@@ -1,8 +1,10 @@
+import { useMutation } from 'convex/react';
 import { useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Alert01FreeIcons, KitchenUtensilsIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
+import { api } from '../../../convex/_generated/api';
 import DetailsProduct from './components/details-product';
 import ValuesNutritional from './components/values-nutritional';
 import { useProducts } from './hooks/useProducts';
@@ -11,6 +13,22 @@ export default function FavoritesScreen() {
   const params = useLocalSearchParams<{ code?: string | string[] }>();
   const productCode = Array.isArray(params.code) ? params.code[0] : params.code;
   const { product, loading, error } = useProducts(productCode);
+  const addFavorite = useMutation(api.favorites.addFavorite);
+
+  async function handleAddFavorite() {
+    if (!product) {
+      return;
+    }
+
+    await addFavorite({
+      code: product.code,
+      brands: product.brands,
+      ecoscoreGrade: product.ecoscoreGrade ?? '',
+      imageUrl: product.imageUrl,
+      nutriscoreGrade: product.nutriscoreGrade,
+      productName: product.productName,
+    });
+  }
 
   function formatValue(value: string | undefined, unit?: string) {
     if (!value) {
@@ -22,7 +40,9 @@ export default function FavoritesScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
-      <Image style={styles.image} />
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: product?.imageUrl }} style={styles.image} />
+      </View>
       <View style={styles.bottomSection}>
         <View style={styles.detailsWrapper}>
           <DetailsProduct
@@ -42,7 +62,7 @@ export default function FavoritesScreen() {
               ),
             ]}
             isFavorite
-            onToggleFavorite={() => alert('Toggle favorite')}
+            onToggleFavorite={handleAddFavorite}
           />
         </View>
       </View>
@@ -90,9 +110,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f6f7',
   },
-  image: {
+  imageContainer: {
     height: 300,
     backgroundColor: '#f16558',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    height: 150,
+    width: 150,
   },
   scrollContent: {
     paddingBottom: 20,
