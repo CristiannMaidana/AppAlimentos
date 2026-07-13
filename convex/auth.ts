@@ -13,7 +13,11 @@ export const authComponent = createClient<DataModel>(components.betterAuth);
 
 export const createAuth = (ctx: GenericCtx<DataModel>) => {
   return betterAuth({
-    trustedOrigins: ["your-scheme://"],
+    trustedOrigins: [
+      "myapp://",
+      // Expo Go uses a LAN URL whose IP and port can change between sessions.
+      "exp://**",
+    ],
     database: authComponent.adapter(ctx),
     // Configure simple, non-verified email/password to get started
     emailAndPassword: {
