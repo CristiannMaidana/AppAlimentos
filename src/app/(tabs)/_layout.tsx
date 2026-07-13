@@ -6,6 +6,7 @@ import { Alert, Pressable, Text, View } from 'react-native';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
+import { authClient } from '@/lib/auth/auth-client';
 
 const activeTabIconContainer = {
   borderRadius: 999,
@@ -40,9 +41,11 @@ export default function TabLayout() {
         ),
         headerRight: () => (
           <Pressable
-            onPress={() => Alert.alert('User', 'User button touched')}
+            accessibilityLabel="Cerrar sesión"
+            accessibilityRole="button"
+            onPress={() => void authClient.signOut()}
             style={{ marginRight: 16 }}>
-            <MaterialIcons name="account-circle" size={28} color="#000000" />
+            <MaterialIcons name="logout" size={28} color="#000000" />
           </Pressable>
         ),
         tabBarButton: HapticTab,
