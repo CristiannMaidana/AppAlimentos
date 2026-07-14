@@ -3,6 +3,8 @@ import { v } from "convex/values";
 
 export default defineSchema ({
     favorites: defineTable({
+        authUserId: v.string(),
+
         code: v.string(),
         brands: v.string(),
         ecoscoreGrade: v.string(),
@@ -10,5 +12,8 @@ export default defineSchema ({
         nutriscoreGrade: v.string(),
         productName: v.string(),
     })
-    .index("by_code", ["code"]),
+    .index("by_user", ["authUserId"])
+    .index("by_user_and_code", [
+        "authUserId", "code"
+    ])
 })
