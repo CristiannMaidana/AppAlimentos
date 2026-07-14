@@ -1,13 +1,13 @@
 import {
-    ActivityIndicator,
-    KeyboardAvoidingView,
-    Platform,
-    Pressable,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
 
 import { useAuthForm } from './hooks/use-auth-form';
@@ -29,7 +29,7 @@ export default function LoginScreen({ onSuccess = () => undefined }: LoginScreen
           <View style={styles.logo}><Text style={styles.logoText}>F</Text></View>
           <Text style={styles.title}>{isSignUp ? 'Creá tu cuenta' : 'Bienvenido'}</Text>
           <Text style={styles.subtitle}>
-            {isSignUp ? 'Registrate para guardar tus alimentos favoritos.' : 'Ingresá para continuar en FoodApp.'}
+            {isSignUp ? 'Registrate para guardar tus alimentos favoritos.' : 'Ingresá para poder guardar tus alimentos favoritos en FoodApp.'}
           </Text>
 
           {isSignUp && (
