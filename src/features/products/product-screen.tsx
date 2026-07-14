@@ -1,7 +1,8 @@
 import { useMutation } from 'convex/react';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { authClient } from '@/lib/auth/auth-client';
 import { Alert01FreeIcons, KitchenUtensilsIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import { api } from '../../../convex/_generated/api';
@@ -15,19 +16,30 @@ export default function FavoritesScreen() {
   const { product, loading, error } = useProducts(productCode);
   const addFavorite = useMutation(api.favorites.addFavorite);
 
+  // Authentification for login
+  const { data: session, isPending } = authClient.useSession();
+  
   async function handleAddFavorite() {
-    if (!product) {
-      return;
+    // Check if the user is login for the function to login
+    if (!session) {
+      router.push({
+        pathname: '/auth',
+      })
     }
+    else {
+      if (!product) {
+        return;
+      }
 
-    await addFavorite({
-      code: product.code,
-      brands: product.brands,
-      ecoscoreGrade: product.ecoscoreGrade ?? '',
-      imageUrl: product.imageUrl,
-      nutriscoreGrade: product.nutriscoreGrade,
-      productName: product.productName,
-    });
+      await addFavorite({
+        code: product.code,
+        brands: product.brands,
+        ecoscoreGrade: product.ecoscoreGrade ?? '',
+        imageUrl: product.imageUrl,
+        nutriscoreGrade: product.nutriscoreGrade,
+        productName: product.productName,
+      });
+    }
   }
 
   function formatValue(value: string | undefined, unit?: string) {
