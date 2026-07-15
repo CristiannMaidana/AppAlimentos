@@ -1,4 +1,4 @@
-import { useMutation } from 'convex/react';
+import { useMutation, useQuery } from 'convex/react';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -15,11 +15,16 @@ export default function FavoritesScreen() {
   const productCode = Array.isArray(params.code) ? params.code[0] : params.code;
   const { product, loading, error } = useProducts(productCode);
   const addFavorite = useMutation(api.favorites.addFavorite);
+  const removeFavorite = useMutation(api.favorites.removeFavorite);
 
   // Authentification for login
-  const { data: session, isPending } = authClient.useSession();
+  const { data: session } = authClient.useSession();
+  const isFavorite = useQuery(
+    api.favorites.isFavorite,
+    session && productCode ? { code: productCode } : 'skip',
+  ) ?? false;
   
-  async function handleAddFavorite() {
+  async function handleToggleFavorite() {
     // Check if the user is login for the function to login
     if (!session) {
       router.push({
@@ -28,6 +33,11 @@ export default function FavoritesScreen() {
     }
     else {
       if (!product) {
+        return;
+      }
+
+      if (isFavorite) {
+        await removeFavorite({ code: product.code });
         return;
       }
 
@@ -73,8 +83,8 @@ export default function FavoritesScreen() {
                 product?.nutriments?.carbohydratesUnit
               ),
             ]}
-            isFavorite
-            onToggleFavorite={handleAddFavorite}
+            isFavorite={isFavorite}
+            onToggleFavorite={handleToggleFavorite}
           />
         </View>
       </View>
