@@ -23,7 +23,7 @@ export default function ButtonAddFavorites({
         pressed && styles.pressed,
       ]}>
       <MaterialIcons
-        color={isFavorite ? 'rgb(90, 101, 92)0, 226, 220, 0.84)f' : '#29621d'}
+        color={isFavorite ? '#29621d' : '#29621d'}
         name={isFavorite ? 'favorite' : 'favorite-border'}
         size={28}
       />
@@ -34,7 +34,7 @@ export default function ButtonAddFavorites({
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: 'rgba(220, 226, 220, 0.84)f',
+    backgroundColor: 'rgba(220, 226, 220, 0.84)',
     borderColor: '#ffffff2d',
     borderRadius: 999,
     borderWidth: 2,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: 60,
   },
   favoriteContainer: {
-    backgroundColor: '#fffff',
+    backgroundColor: 'rgba(220, 226, 220, 0.84)',
   },
   pressed: {
     opacity: 0.75,
