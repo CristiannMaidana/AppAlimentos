@@ -19,6 +19,27 @@ export const listFavorites = query({
   },
 });
 
+export const isFavorite = query({
+  args: {
+    code: v.string(),
+  },
+
+  handler: async (ctx, args) => {
+    const authUser = await authComponent.getAuthUser(ctx);
+
+    const favorite = await ctx.db
+      .query("favorites")
+      .withIndex("by_user_and_code", (query) =>
+        query
+          .eq("authUserId", authUser._id)
+          .eq("code", args.code),
+      )
+      .unique();
+
+    return favorite !== null;
+  },
+});
+
 export const addFavorite = mutation({
   args: {
     code: v.string(),
